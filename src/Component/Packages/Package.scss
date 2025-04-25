@@ -1,0 +1,91 @@
+.pricing-box {
+  background: linear-gradient(135deg, rgb(130 126 132 / 37%), #000000, rgb(107 103 109 / 41%));
+  color: white;
+  padding: 20px;
+  padding-top: 0;
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  text-align: center;
+  width: 100%;
+  height: 345px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 30px;
+
+  .icon {
+    background: #d7fa46;
+    width: 125px;
+    height: 135px;
+    margin: 0 auto;
+    border-radius: 0 0 100px 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6a0dad;
+    img {
+        width: 115px;
+        filter: drop-shadow(0px 2px 4px #333);
+    }
+  }
+
+  .price {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #ffc928;
+    text-shadow: 0px 1px 7px #4e0d81;
+  }
+
+  .package-name {
+    font-size: 17px;    color: #ffffff;
+  }
+
+  .discount {
+    background: #49464c7a;
+    /* display: inline-block; */
+    padding: 5px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 10px 0 0;
+    color: #ffffff;
+  }
+  .enterAmount{
+    background: #49464c7a;
+    /* display: inline-block; */
+    padding: 5px 15px;
+    border-radius: 8px;
+    font-size: 15px;
+    margin: 10px 0 5px;
+    color: #ffffff;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    border: none;
+    &::placeholder {
+      color: #ffffffd0;
+    }
+  }
+
+  .buy-now {
+    background: linear-gradient(180deg, #f7dd51, #b29a1a);
+    color: #0d0d0d;
+    border: none;
+    padding: 7px 15px;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 84%;
+    position: absolute;
+    bottom: -28px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &:hover {
+      background: #ffffff;
+      color: black;
+    }
+  }
+}

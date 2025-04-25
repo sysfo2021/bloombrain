@@ -1,0 +1,31 @@
+// App Scss //
+@import '../public/assets/scss/app.scss';
+
+
+/* Scrollbar width */
+::-webkit-scrollbar {
+    width: 10px; /* Width set karo */
+  }
+  
+  /* Scrollbar track */
+  ::-webkit-scrollbar-track {
+    background: #393939 !important; /* Track color */
+  }
+  
+  /* Scrollbar thumb (jo move hoti hai) */
+  ::-webkit-scrollbar-thumb {
+    background: #101010 !important; /* Scrollbar ka color */
+    border-radius: 10px !important;
+  }
+  
+  /* Hover pe color change */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0c0c0c !important;
+  }
+  
+  /* Firefox ke liye */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #393939 #101010 !important;
+  }
+  
