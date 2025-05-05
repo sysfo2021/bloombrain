@@ -99,20 +99,20 @@ const ContainerDashboard = () => {
       setprofileName({ memberName: data[0]?.SName, Rank: data[0]?.MyRank })
       setcouponCode(data[0]?.CouponCode);
       setCoponCount(data[0]?.CouponCount);
-      setAirdropBalance(data[0]?.AirdropWallet);
+      setAirdropBalance(data[0]?.FXSTToken);
       setGiftWallet(data[0]?.GiftWallet);
       setBonanzaBalance(data[0]?.BonanzaWallet);
       setisCouponApplicable(data[0]?.IsApplicableForCoupon);
       setactOverview(objectEntriesToArray({
         'Activation': data[0]?.ActivationDate == "" ? "--" : data[0]?.ActivationDate,
         "Registration": data[0]?.RegistrationDate,
-        "Bot Status": data[0]?.BotStatus
+        "Status": data[0]?.BotStatus
       }))
 
       setmyWallets(objectEntriesToArray({
         "Commission Wallet": `$${data[0]?.CommissionBalance}`,
         "Deposit Wallet": `$${data[0]?.ProductWallet}`,
-        "MT5 Wallet": `$${data[0]?.MT5Wallet}`,
+        "Days Left": `${data[0]?.DaysLeft}`,
       }))
 
       // settokenData([
@@ -130,18 +130,18 @@ const ContainerDashboard = () => {
         "Club Income": `$${data[0]?.ClubIncome || 0}`,
       }))
       setBusniessoverView(objectEntriesToArray({
-        'Right Bot': data[0]?.RightTeamBotCount,
+        'Right Business': data[0]?.RightTeamBotCount,
         'Total Right': data[0]?.TotalRightTeamBotCount
       }))
 
       setLegBOverview(objectEntriesToArray({
-        "Left Bot": data[0]?.LeftTeamBotCount,
+        "Left Business": data[0]?.LeftTeamBotCount,
         "Total Left": data[0]?.TotalLeftTeamBotCount,
       }))
 
       setTotalInvestment(objectEntriesToArray({
-        "Power Leg Business": data[0]?.StrongerZoneBusiness,
-        "Weaker Leg Business": data[0]?.WeakerZoneBusiness,
+        "Left Carry Forward Business": data[0]?.LeftRemainingTeamBotCount,
+        "Right Carry Forward Business": data[0]?.RightRemainingTeamBotCount,
       }))
 
       setdownloadappData(data[0]?.TotalZoneBusines)
@@ -174,45 +174,24 @@ const ContainerDashboard = () => {
       const IncomesData = [
         {
           icon:dynamicImage(`TotalTeam.png`),
-          title:'Trade Profit Income',
-          Value:data[0]?.DailyProfitIncome,
+          title:'Direct Bonus',
+          Value:data[0]?.SponsorIncome,
         },
         {
           icon:dynamicImage(`TotalTeam.png`),
-          title:'Profit Sharing Income',
-          Value:data[0]?.ProfitSharingIncome,
-        },
-        {
-          icon:dynamicImage(`TotalTeam.png`),
-          title:'Bot Generation Income',
-          Value:data[0]?.BotLevelIncome,
-        },
-        {
-          icon:dynamicImage(`TotalTeam.png`),
-          title:'Bot Matching Income',
+          title:'Binary Bonus',
           Value:data[0]?.BotMatchingIncome,
         },
         {
           icon:dynamicImage(`TotalTeam.png`),
-          title:'Fast Track Income',
-          Value:data[0]?.FastTrackIncome,
+          title:'Rank Bonus',
+          Value:data[0]?.LifeTimeReward,
         },
         {
           icon:dynamicImage(`TotalTeam.png`),
-          title:'Reward & Rank',
+          title:'Reward',
           Value:data[0]?.RewardIncome,
-        },
-        {
-          icon:dynamicImage(`TotalTeam.png`),
-          title:'Club Income',
-          Value:data[0]?.ClubIncome,
-        },
-        {
-          icon:dynamicImage(`TotalTeam.png`),
-          title:'IB Income',
-          Value:data[0]?.IBIncome,
-        },
-
+        }
       ]
 
       setincomeData(IncomesData)
@@ -269,8 +248,8 @@ const ContainerDashboard = () => {
           <AccountOverview actOverviewData={actOverview} LastLogin={LastLogin} myWallets={myWallets} />
           <Investing IncomesData={incomeData} />
           <TotalInvestment TotalinvestmentData={totalInvestment} />
-          <TaskSummary TeamData={TeamData} />
           <BusinessOverview LegBViewdata={LegBOverview} BOverviewData={busniessoverView} />
+          <TaskSummary TeamData={TeamData} />         
           <DownloadApp downloadappData={downloadappData} />
           <Other_Wallet airdrop={airdropBalance} gitwallet={giftWallet} bonanza={bonanzaBalance} />
           

@@ -181,7 +181,7 @@
         background-position: right -224% bottom 147%;
       }
       @media (min-width: 1450px) and (max-width: 1470px) {
-        background-position:right 0% bottom 155%;
+        background-position: right 0% bottom 155%;
       }
       @media (min-width: 1200px) and (max-width: 1450px) {
         background-image: none !important;
@@ -232,7 +232,6 @@
         @media (min-width: 1200px) and (max-width: 1450px) {
           height: 100%;
           padding: 0px 0px !important;
-          
         }
         @include media-breakpoint-up(sm) {
           @media (max-width: 815px) {
@@ -261,15 +260,14 @@
         filter: brightness(0.5) invert(1);
       }
       @media screen and (max-width: 600px) {
-        font-size: 21px !important;
+        font-size: 20px !important;
       }
       @media (min-width: 1200px) and (max-width: 1450px) {
         font-size: 25px !important;
       }
       @include media-breakpoint-up(sm) {
-        
         @media (max-width: 815px) {
-          font-size: 25px !important;
+          font-size: 21px !important;
         }
       }
     }
@@ -329,7 +327,7 @@
       @media (max-width: 420px) {
         margin-top: 0px;
         padding: 5px 9px;
-        font-size: 13px ! IMPORTANT;
+        font-size: 13px !important;
       }
     }
   }
@@ -1645,15 +1643,14 @@ h5,
   }
 }
 
-
 .referral-tab {
   width: 100%;
-    max-width: 400px;
-    background: #ffffff00;
-    padding: 15px 0px 10px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  max-width: 400px;
+  background: #ffffff00;
+  padding: 15px 0px 10px;
+  border-radius: 8px;
+  // box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 
   .tab-buttons {
     display: flex;
@@ -1662,24 +1659,34 @@ h5,
     gap: 14px;
 
     button {
-      background: #585858;
-    color: white;
+      background: #366899;
+      color: white;
       flex: 1;
       padding: 8px 12px;
       font-size: 14px;
       border: none;
-      border-radius: 5px;
+      border-radius: 50px;
       transition: 0.3s;
 
       &.active {
-        background: #fff;
-    color: #000;
-    box-shadow: 0px 0px 9px 0px rgb(0 0 0 / 62%);
-    border-bottom: 3px solid #838383;
+        background: linear-gradient(
+          89deg,
+          rgb(41, 136, 239),
+          rgb(131, 214, 253)
+        ) !important;
+        box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2) !important;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        color: #ffffff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+        font-size: 14px;
       }
 
       &:hover {
-        background: #000;
+        background: linear-gradient(135deg, #00c9a7, #006666);
         color: white;
       }
     }
@@ -1692,34 +1699,34 @@ h5,
 
     .referral-input {
       flex: 1 1;
-    padding: 6px 8px;
-    font-size: 12px;
-    border: 1px solid rgb(130 101 23 / 54%);
-    border-radius: 5px;
-    background: rgb(207 157 51 / 25%);
-    color: #fcfcfc;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+      padding: 6px 8px;
+      font-size: 11px;
+      border: 1px solid rgb(0 188 212 / 68%);
+      border-radius: 5px;
+      background: rgb(0 188 212 / 54%);
+      color: #fcfcfc;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
     }
 
     .copy-btn {
-      padding: 6px 10px;
+      padding: 7px 10px;
       font-size: 12px;
       border: none;
-      background: #e2a323;
-      color: white;
+      background: #15e4ff;
+      color: #241b1b;
       border-radius: 5px;
       cursor: pointer;
       transition: 0.3s;
 
       &:hover {
-        background: #000;
+        background: #2196f3;
+        color: #ffffff;
       }
     }
   }
 }
 
-.drop-shodow{
- filter: drop-shadow(0px 0px 8px #e6b855b3);
+.drop-shodow {
+  filter: drop-shadow(0px 0px 8px #80d3fd);
 }
-

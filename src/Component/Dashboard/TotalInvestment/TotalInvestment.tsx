@@ -1,6 +1,6 @@
 import { Card, CardBody, Col } from "reactstrap";
 import CardHeaderCommon from "../../../CommonElements/CommonCardHeader/CardHeaderCommon";
-import { Monthly, TotalInvestmentHeading, Weekly, Yearly } from "../../../utils/Constant";
+import { Monthly, CarryForwardHeading, Weekly, Yearly } from "../../../utils/Constant";
 import ReactApexChart from "react-apexcharts";
 import { totalInvestmentChart } from "../../../Data/Dashboard/DashboardChartData";
 import { H5, H6, LI, UL, Btn,Image } from "../../../AbstractElements";
@@ -9,14 +9,14 @@ import { dynamicImage } from '../../../Service/index'
 const TotalInvestment = (props: any) => {
   const {TotalinvestmentData} = props
   const Data = [
-    {title:"Power Leg Business", Value:TotalinvestmentData[0]?.value, ImgPath:dynamicImage(`L-business.png`)},
-    {title:"Weaker Leg Business", Value:TotalinvestmentData[0]?.value, ImgPath:dynamicImage(`R-business.png`)}
+    {title:"Left Carry Forward Business", Value:TotalinvestmentData[0]?.value, ImgPath:dynamicImage(`L-business.png`)},
+    {title:"Right Carry Forward Business", Value:TotalinvestmentData[0]?.value, ImgPath:dynamicImage(`R-business.png`)}
   ]
   
   return (
-    <Col xl="3" md="3">
+    <Col sm="12" md="4" lg="3" xl="3">
+      <CardHeaderCommon headClass="pb-0" title={CarryForwardHeading} firstItem={Weekly} secondItem={Monthly} thirdItem={Yearly} />
       <Card className="invest-card ecommerce-dashboard">
-        <CardHeaderCommon headClass="pb-0" title={TotalInvestmentHeading} firstItem={Weekly} secondItem={Monthly} thirdItem={Yearly} />
         <CardBody className="p-0 category ">
           <UL>
             {Data.map((itm:any, idx:number)=> <LI className="d-flex  bg-light card-hover mt-2" style={{padding:'10px'}}>

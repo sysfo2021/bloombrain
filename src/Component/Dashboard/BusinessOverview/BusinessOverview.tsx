@@ -6,10 +6,9 @@ import LegBusinessOverview from "./LegBusinessOverview";
 
 const CategoryOverview = (props:any) => {
   return (
-    <Col md="5" xl="4" className="ecommerce-dashboard ">
+    <Col sm="12" md="12" lg="5" xl="4" className="ecommerce-dashboard ">
        <CardHeaderCommon headClass="pb-0" title={BusinessOverviewHeading} firstItem={Weekly} secondItem={Monthly} thirdItem={Yearly} />
       <Card className="">
-       
         <CardBody className="category" style={{paddingTop:'0px'}}>
           <Row>
             <Col xl="6" xs="6">

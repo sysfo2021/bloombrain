@@ -7,9 +7,9 @@ import CardHeaderCommon from "../../../CommonElements/CommonCardHeader/CardHeade
 const Other_Wallet = (props:any) => { 
   return (
         <>
-        <Col md="4" className='col-12'>
+        <Col sm="12" md="4" lg="4" className='col-12'>
+        <CardHeaderCommon headClass="pb-20" title={TotalWithdrawal} />
           <Card className="client-card card-hover">
-          <CardHeaderCommon headClass="pb-20" title={TotalWithdrawal} />
             <CardBody>
               <Row>
                 <Col xs="6" className="custom-width-1">
@@ -25,9 +25,9 @@ const Other_Wallet = (props:any) => {
             </CardBody>
           </Card>
         </Col>
-        <Col className='col-12 px-md-3 ' md="4">
+        <Col className='px-md-3' sm="12" md="4" lg="4">
+        <CardHeaderCommon headClass="pb-20" title={TotalEarning} />
           <Card className="client-card card-hover">
-          <CardHeaderCommon headClass="pb-20" title={TotalEarning} />
             <CardBody>
               <Row>
                 <Col xs="6" className="custom-width-1">

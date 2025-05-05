@@ -22,11 +22,11 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    background: url("../../images/login/LoginGif.gif") !important;
+    // background: url("../../images/login/LoginGif.gif") !important;
     background-position: center !important;
     padding: 30px 12px;
     background-size: cover !important;
-    font-family: "Comfortaa", serif !important;
+    font-family: "Nunito Sans", sans-serif !important;
     font-optical-sizing: auto;
     .logo {
         display: block;
@@ -50,19 +50,28 @@
     .login-main {
         width: 450px;
         padding: 40px;
-        border-radius: 10px;
-        box-shadow: var(--login-box-shadow);
+        border-radius: 20px;
+        box-shadow:0 10px 25px rgba(0, 0, 0, 0.2);
         margin: 0 40px;
-        background-color: $white;
+        background: linear-gradient(45deg, rgb(50 57 250 / 29%), rgb(49 113 143 / 22%));
         [data-theme="dark"] & {
             padding: 30px;
-            background-color: rgb(1 1 1 / 46%);
+            background: linear-gradient(45deg, rgb(50 57 250 / 29%), rgb(49 113 143 / 22%));
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
-            box-shadow: rgb(29 29 29) 1px 1px 7px 0px;
+            box-shadow:0 10px 25px rgba(0, 0, 0, 0.2);
             }
         .theme-form {
             h4 {
                 margin-bottom: 5px;
+            }
+            h2{
+                font-size: 40px;
+                font-weight: 700;
+                @media screen and (max-width: 575px){
+                    font-size: 30px;
+                    
+                }
             }
             .link-two{
                 position: absolute;
@@ -102,10 +111,10 @@
                     width: fit-content;
                     margin-left: auto;
                     margin-right: auto;
-                    color: var(--light-text);
-                    background-color: var(--card-color);
-                    padding-left: 25px;
-                    padding-right: 25px;
+                    color: #a4d7ff;
+                    background-color: #0c1b49;
+                    padding-left: 10px;
+                    padding-right: 10px;
                 }
                 &:before {
                     content: "";
@@ -120,15 +129,17 @@
             }
             input {
                 transition: all 0.3s ease;
-                background: rgba(0, 0, 0, 0.3);
-                border:solid 1px #5e5b5e;
-    border-radius: 0px;
+                background: rgb(0 0 0 / 0%);
+                border: solid 1px #03a9f480;
+                border-radius: 50px;
                 &::-webkit-input-placeholder {
                     color: var(--light-text);
                 }
                 &:hover,
                 &:focus {
-                    box-shadow: none !important;
+                    outline: none;
+                    border: 2px solid #3B82F6;
+                    box-shadow: 0 0 5px #3B82F6;
                     transition: all 0.3s ease;
                 }
             }
@@ -138,17 +149,21 @@
             }
             p {
                 margin-bottom: 25px;
-                font-size: 14px;
-                color: var(--dark-gray);
+                font-size: 16px;
+                color: #ffffff;
+                font-weight: 400;
                 a {
-                    color: var(--theme-default);
+                    color: #eca1ff;
+                    &:hover {
+                        text-decoration: underline;
+                    }
                 }
             }
             .form-group {
                 margin-bottom: 10px;
                 position: relative;
                 a {
-                    color:rgb(255 244 0);
+                    color:rgb(147 202 255);
                     float: right;
                     &.link{
                         float: none;
@@ -248,7 +263,7 @@
 }
 .login-dark{
     [data-theme="dark"] & {
-        background-color: var(--card-color);
+        // background-color: var(--card-color);
         background-blend-mode: overlay;
         }
 }
@@ -359,21 +374,99 @@
     border-radius: 10px;
 }
 .login-card .logo img{
-    WIDTH:80%;
+    width: 40%;
+    margin: 0 auto 15px;
 }
 .login-card .logo1 img{
    height:120px;
    width:auto !important;
 }
-// .css-zfdy81-control{
-//     border: 1px solid #5e5b5e !important;
-//     background-color: transparent !important;
-//     border-radius: 0px !important;
 
-//     .css-19bb58m{
-//         color: hsl(0deg 0% 100%) !important;
-//     }
-// }
+
+.video-container {
+    position: relative;
+    overflow: hidden;
+  
+    .background-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      object-fit: cover;
+      background-color: black; // fallback background
+    }
+  
+    .content {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+      text-align: center;
+      top: 30%;
+      padding: 0 1rem;
+  
+    }
+  }
+
+  .Loginbutton {
+    position: relative;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background: linear-gradient(89deg, rgb(41, 136, 239), rgb(131, 214, 253)) !important;
+    box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2) !important;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+}
+
+    .Loginbutton:after {
+        content: " ";
+        width: 0%;
+        height: 100%;
+        background: linear-gradient(79deg, rgb(131, 214, 253), rgb(41, 136, 239)) !important;
+        position: absolute;
+        transition: all 0.4s ease-in-out;
+        right: 0;
+    }
+
+    .Loginbutton:hover::after {
+        right: auto;
+        left: 0;
+        width: 100%;
+    }
+
+    .Loginbutton span {
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        z-index: 20;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .Loginbutton:hover span {
+        color: #fff;
+        animation: scaleUp 0.3s ease-in-out;
+    }
+
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
 /**=====================
       25. Authentication CSS Ends
   ==========================**/

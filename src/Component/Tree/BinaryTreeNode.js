@@ -84,40 +84,40 @@ export default class BinaryTreeNode extends React.Component {
                   </div>
                   <div className="details-row">
                     <div className="d-flex align-items-center justify-content-between w-100">
-                      <div className="label">{'Bot Status'}</div>
+                      <div className="label">{'Status'}</div>
                       <div className="value">{user?.description?.Bot_Status}</div>
                     </div>
                   </div>
                   <div className="details-row">
                     <div className="d-flex align-items-center justify-content-between w-100">
-                      <div className="label">{'Bot Activation Date'}</div>
+                      <div className="label">{'Activation Date'}</div>
                       <div className="value">{user?.description?.Bot_Activation_Date}</div>
                     </div>
                   </div>
                   <div className="details-title"> </div>
                   <div className="details-row border-top-2" style={{ background: "none", gap: "10", justifyContent: "space-between", padding: "0", flexWrap: "wrap" }}>
                     <div className="d-flex align-items-center justify-content-between" style={{ background: "rgba(59, 59, 59, 0.68)", width: "49%", padding: "1px 4px", marginBottom: "3px" }}>
-                      <div className="label">{'Total Left Bot'}</div>
+                      <div className="label">{'Total Left Business'}</div>
                       <div className="value">{user?.description?.totalleftTeamCount}</div>
                     </div>
                     <div className="d-flex align-items-center justify-content-between"  style={{ background: "rgba(59, 59, 59, 0.68)", width: "49%", padding: "1px 4px", marginBottom: "3px" }}>
-                      <div className="label">{'Total Right Bot'}</div>
+                      <div className="label">{'Total Right Business'}</div>
                       <div className="value">{user?.description?.totalRightTeamCount}</div>
                     </div>
                     <div className="d-flex align-items-center justify-content-between"  style={{ background: "rgba(59, 59, 59, 0.68)", width: "49%", padding: "1px 4px", marginBottom: "3px" }}>
-                      <div className="label">{'Current Left Bot'}</div>
+                      <div className="label">{'Current Left Business'}</div>
                       <div className="value">{user?.description?.leftTeamCount}</div>
                     </div>
                     <div className="d-flex align-items-center justify-content-between" style={{ background: "rgba(59, 59, 59, 0.68)", width: "49%", padding: "1px 4px", marginBottom: "3px" }}>
-                      <div className="label">{'Current Right Bot'}</div>
+                      <div className="label">{'Current Right Business'}</div>
                       <div className="value">{user?.description?.rightTeamCount}</div>
                     </div>
                     <div className="d-flex align-items-center justify-content-between" style={{ background: "rgba(59, 59, 59, 0.68)", width: "49%", padding: "1px 4px", marginBottom: "3px" }}>
-                      <div className="label">{'Remaining Left Bot'}</div>
+                      <div className="label">{'Remaining Left Business'}</div>
                       <div className="value">{user?.description?.leftRemainingTeamCount}</div>
                     </div>
                     <div className="d-flex align-items-center justify-content-between" style={{ background: "rgba(59, 59, 59, 0.68)", width: "49%", padding: "1px 4px", marginBottom: "3px" }}>
-                      <div className="label">{'Remaining Right Bot'}</div>
+                      <div className="label">{'Remaining Right Business'}</div>
                       <div className="value">{user?.description?.rightRemaining}</div>
                     </div>
                   </div>

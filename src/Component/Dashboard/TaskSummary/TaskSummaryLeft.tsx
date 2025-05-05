@@ -7,7 +7,7 @@ const TaskSummaryLeft = (props: any) => {
   const {TeamData} = props;
   return (
     <Row>
-      {TeamData.map((itm:any, idx:number) => <Col xl="4" key={idx}>
+      {TeamData.map((itm:any, idx:number) => <Col sm="12" md="4" lg="4" xl="4" key={idx}>
         <UL>
           <LI
             className={`d-flex align-items-center mb-2 mb-md-0 card-hover ${itm?.color}`}

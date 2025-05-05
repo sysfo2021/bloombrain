@@ -8,7 +8,7 @@ const Footer = () => {
         <Row>
           <Col md="12 text-center" className="footer-copyright">
             <P className="mb-0">
-              Copyright 2025 © Prime Orbit Ai. All Rights Reserved
+              Copyright 2025 © Bloombrain Capital. All Rights Reserved
             </P>
           </Col>
           {/* <Col md="6">

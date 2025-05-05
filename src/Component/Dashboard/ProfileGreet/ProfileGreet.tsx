@@ -39,7 +39,7 @@ const ProfileGreet = (props: any) => {
     }
   };
   return (
-    <Col xl="6" sm="12">
+    <Col sm="12" md="5" lg="6" xl="6">
       <Card className="profile-greeting card-hover bgImage1 overflow-hidden">
         <CardBody>
           <div className="img-overlay" >
@@ -48,7 +48,7 @@ const ProfileGreet = (props: any) => {
             <H6>{Rank ? Rank : 'NO Rank'}</H6> */}
             
             <P className="mb-1">
-              Welcome to the Prime Orbit Ai family!
+              Welcome to the Bloombrain Capital family!
             </P>
 
             <ReferralLink />

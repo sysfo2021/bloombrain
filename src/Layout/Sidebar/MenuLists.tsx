@@ -79,7 +79,7 @@ const MenuLists: React.FC<MenuListType> = ({ menu, setActiveMenu, activeMenu, le
             ${(item.children ? item.children.map((innerItem) => ActiveNavLinkUrl(innerItem.path)).includes(true) : ActiveNavLinkUrl(item.path)) || activeMenu[level] === item.title ? "active" : ""}`}
             onClick={() => {item.title === "Logout" ? HandleLogOut() :item.title === "Dashboard" || item.title == "Activate Bot" || item.title === "Account Settings" || item.title === "Support Ticket" ? CloseSideBar() : handleClick(item.title)}}
             to={item.title === "Logout" ? `${process.env.PUBLIC_URL}/login` :item.path ? item.path :  Href}
-            target={item.path === "http://122.160.25.202/PrimeorbitAI/memberpanel/PrimeOrbitAi_Final.pdf" ? '_blank': undefined}
+            target={item.path === "../../../public/assets/images/BBCPlane.pdf" ? '_blank': undefined}
             rel="noreferrer noopener"
           >
             {level === 0 ? <SVG className={`stroke-icon`} iconId={item.icon} /> : level === 1 && <SVG className={`svg-menu`} iconId={"right-3"} />}

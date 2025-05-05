@@ -445,11 +445,32 @@ label {
 
 .radio-btn{
     transition: all 0.3s ease;
-    background: rgba(0, 0, 0, 0.3);
-    border: solid 1px #9797978f;
-    border-radius: 0px;
+    background: rgb(0 0 0 / 0%);
+    border: solid 1px rgba(3, 169, 244, 0.5019607843);
+    border-radius: 50px;
     padding: 9px 20px;
+    width: 100%;
 }
+.css-zfdy81-control {
+    
+    background-color: hsl(0deg 0% 100% / 0%) !important;
+    border-color: hsl(0, 0%, 80%) !important;
+    border-radius: 50px !important;
+    border: solid 1px rgba(3, 169, 244, 0.5019607843) !important;
+}
+    .css-15ksst5-placeholder {
+        grid-area: 1 / 1 / 2 / 3;
+        color: #c3c0c0 !important;
+        margin-left: 2px;
+        margin-right: 2px;
+        box-sizing: border-box;
+    }
+    .css-1dimb5e-singleValue {
+        color: hsl(0deg 0% 100%) !important;
+    }
+    .css-19bb58m {
+        color: hsl(0deg 0% 0%);
+    }
 /**=====================
      form css end
 ==========================**/

@@ -10,8 +10,8 @@ const Header = () => {
       <div className="logo-wrapper d-flex align-items-center col-auto">
       <CloseButton />
         <Link to={`${process.env.PUBLIC_URL}/dashboard`} className="w-75">
-          <Image className="for-light w-100" src={dynamicImage("logo/Prime_orbit.png")} alt="logo"/>
-          <Image className="for-dark w-100" src={dynamicImage("logo/Prime_orbit.png")} alt="logo"/>
+          <Image className="for-light w-100" src={dynamicImage("logo/BBC_LOGO.png")} alt="logo"/>
+          <Image className="for-dark w-100" src={dynamicImage("logo/BBC_LOGO.png")} alt="logo"/>
         </Link> 
        
       </div>

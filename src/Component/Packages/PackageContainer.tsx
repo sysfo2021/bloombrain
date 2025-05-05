@@ -23,8 +23,7 @@ const PackageContainer = () => {
   // Yup Validation Schema
   const validationSchema = Yup.object().shape({
     Amount: Yup.number()
-      .required("Amount is required")
-      .min(1, "Amount must be greater than zero"),
+      .optional() 
   });
 
   // Fetching Packages
@@ -48,7 +47,7 @@ const PackageContainer = () => {
     if (confirmed) {
       const param = {
         DepositToken: token,
-        PackageAmount: values?.Amount,
+        PackageAmount: 0,
         PackageId: item.PackageId,
         ClientId: ClientID,
         ActionMode: "PurchaseToken",
@@ -90,7 +89,7 @@ const PackageContainer = () => {
                   <img src={dynamicImage(plan.PackageImage)} alt={plan.PackageImage} />
                 </div>
                 <h2 className="price">
-                  {plan?.MinAmount} - {plan?.MaxAmount}
+                  {plan?.MinAmount}
                 </h2>
                 <p className="package-name">{plan.PackageName}</p>
                 <p className="discount">{plan.RoiPercentage}</p>
@@ -104,8 +103,8 @@ const PackageContainer = () => {
                 >
                   {({ resetForm }) => (
                     <Form>
-                      <Field type="number" className="enterAmount" name="Amount" placeholder="Enter Amount" />
-                      <ErrorMessage name="Amount" component="div" className="text-danger" />
+                      {/* <Field type="number" className="enterAmount" name="Amount" placeholder="Enter Amount" />
+                      <ErrorMessage name="Amount" component="div" className="text-danger" /> */}
                       <button className="buy-now" type="submit">
                         Buy Now {loading && PackageName === plan.PackageName ?  <div className="spinner-border spinner-border-sm" role="status">
                           <span className="sr-only">Loading...</span>

@@ -33,9 +33,9 @@ const Investing = (props: any) => {
   // }
 
   return (
-    <Col xl="12" sm="12" className="mt-md-0 mt-3">
+    <Col sm="12" md="12" lg="12" xl="12" className="mt-md-0 mt-3">
       <Row>
-        {IncomesData.map((itm:any, idx:number)=> <Col xl="3" sm="3">
+        {IncomesData.map((itm:any, idx:number)=> <Col sm="12" md="6" lg="3" xl="3">
           <CardHeaderCommon headClass="pb-0" title={itm?.title} firstItem={Weekly} secondItem={Monthly} thirdItem={Yearly} />
           <Card className="investing-card">
             <div className="text-end me-3"></div>

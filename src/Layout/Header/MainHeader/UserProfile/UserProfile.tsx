@@ -12,13 +12,13 @@ const UserProfile = () => {
   return (
     <LI className="profile-dropdown custom-dropdown">
       <div className="d-flex align-items-center" onClick={()=>setShow(!show)}>
-        <Image src={dynamicImage("default_user.png")} alt="avatar" />
+        <Image src={dynamicImage("default_user.png")} style={{width: 32, height: 32}} alt="avatar" />
         <div className="flex-grow-1 d-block">
          <div>
          <span> <span>[{userName}]</span></span>
-          <div className="d-flex justify-content-between align-items-center rounded pe-2" style={{border:'2px solid #e6b855'}}>
+          <div className="d-flex justify-content-between align-items-center rounded pe-2" style={{border:'1px solid rgb(0 188 212 / 78%)'}}>
           <div><Btn className="btn btn-primary pb-0 pt-1 px-1 rounded-1" style={{fontSize:'12px'}}>Rank</Btn></div>
-          <div> <P className="flex-grow-1 p-0 d-block text-center" style={{fontSize:12, fontWeight:500, lineHeight:1}}>{RankName}</P></div>
+          <div> <P className="flex-grow-1 p-0 d-block text-center" style={{fontSize:10, fontWeight:500, lineHeight:1}}>{RankName}</P></div>
           </div>
           </div>
           <div>
