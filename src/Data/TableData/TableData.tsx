@@ -598,18 +598,7 @@ export const serverColumn: TableColumn<ServerSideProcessingColumnsInterface>[] =
         />
       )
     },
-    {
-      name: "RoyalityAchiever",
-      selector: (row:any) => row['RoyalityAchiever'],
-      sortable: true,
-      center: false,
-      width:'200px',
-      cell: row => (
-        <div
-          dangerouslySetInnerHTML={{ __html: row.RoyalityAchiever }}
-        />
-      )
-    },
+    
     {
       name: "Investment",
       selector: (row:any) => row['Investment'],

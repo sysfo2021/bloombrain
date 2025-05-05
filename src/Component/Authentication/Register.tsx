@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { Col, Container, Input, Label, Row, FormGroup } from "reactstrap";
 import RatioImage from "../../CommonElements/RatioImage";
-import { Btn, H2, H6, H3, P, Image } from "../../AbstractElements";
+import { Btn, H2, H6, P, Image } from "../../AbstractElements";
 import Captcha from "../Authentication/Captcha";
 import { dynamicImage } from "../../Service";
 import CountryWithFlag from "../Authentication/CountryWithFlag";
@@ -80,11 +80,18 @@ const RegisterWithBgImageContainer = () => {
 
   const validationSchema = Yup.object({
     SponsorUserName: Yup.string().required("Sponsor ID is required"),
+    PlaceUnderUserName: Yup.string()
+      .required("Username is required")
+      .min(6, "Username must be at least 6 characters")
+      .matches(
+        /^[A-Za-z0-9]+$/,
+        "Only letters and numbers are allowed (no spaces or special characters)"
+      ),
     sponsorName: Yup.string().optional(),
     FirstName: Yup.string().required("Name is required"),
     MobileNo: Yup.string().required("Mobile Number is required"),
     CountryId: Yup.string().required("Country is required").optional(),
-    Position: Yup.string().required("Position is required"),
+    Position: Yup.string().optional(),
     EmailId: Yup.string().email("Invalid email").required("Email is required"),
     OTP: Yup.string().required("OTP is required"),
     address: Yup.string().optional(),
@@ -113,10 +120,10 @@ const RegisterWithBgImageContainer = () => {
       //return;
       const res = await registerMember({
         SponsorUserName: SponsorUserName,
-        PlaceUnderUserName: "",
+        PlaceUnderUserName:PlaceUnderUserName,
         FirstName: FirstName,
         MobileNo: MobileNo,
-        Position: Position,
+        Position: "0",
         CountryId: CountryName,
         EmailId: EmailId,
         OTP: OTP,
@@ -187,8 +194,10 @@ const RegisterWithBgImageContainer = () => {
     const param = {
       UserName: actionType === "Sponsor" ? SponsorUserName : PlaceUnderUserName,
     };
+    console.log(actionType);
     const obj = {
-      procName: "CheckSponsor",
+      procName:
+        actionType === "Sponsor" ? "CheckSponsor" : "CheckUsernameAvailability",
       Para: JSON.stringify(param),
     };
     if (value?.length > 0) {
@@ -237,7 +246,7 @@ const RegisterWithBgImageContainer = () => {
       PlaceUnderUserName: "",
       FirstName: "",
       MobileNo: "",
-      Position: leg,
+      Position: "0",
       CountryId: "",
       EmailId: "",
       OTP: "",
@@ -289,7 +298,14 @@ const RegisterWithBgImageContainer = () => {
   };
 
   return (
-    <Container fluid className="p-0" style={{ overflowX: "hidden" }}>
+    <Container
+      fluid
+      className="p-0 video-container"
+      style={{ overflowX: "hidden" }}
+    >
+      <video autoPlay muted loop playsInline className="background-video">
+        <source src={dynamicImage("loginbg.mp4")} type="video/mp4" />
+      </video>
       {loading && <Loader />}
       <Row className="m-0">
         <Col xl="12" className="p-0">
@@ -298,16 +314,7 @@ const RegisterWithBgImageContainer = () => {
             style={{ backgroundColor: "transparent" }}
           >
             <div>
-              <div
-                className="login-main w-101"
-                style={{
-                  padding: "30px",
-                  backgroundColor: "rgb(1 1 1 / 46%)",
-                  backdropFilter: "blur(10px)",
-                  boxShadow: "rgb(29 29 29) 1px 1px 7px 0px",
-                  margin: 0,
-                }}
-              >
+              <div className="login-main w-101">
                 <Formik
                   initialValues={FormFieldData || RegistrationForminitialValues}
                   validationSchema={validationSchema}
@@ -324,19 +331,17 @@ const RegisterWithBgImageContainer = () => {
                           <Image
                             className="img-fluid for-light"
                             src={dynamicImage("logo/GoldenLogo.png")}
-                            style={{ margin: "auto" }}
                             alt="logo"
                           />
                           <Image
                             className="img-fluid for-dark"
                             src={dynamicImage("logo/GoldenLogo.png")}
-                            style={{ margin: "auto" }}
                             alt="darkLogo"
                           />
                           <hr style={{ opacity: "0.5", margin: "0px" }} />
                         </div>
                       </div>
-                      <H3 className="text-center">Create Your Account</H3>
+                      <H2 className="text-center">Create Your Account</H2>
                       <P className="text-center">
                         {"Enter your personal details to create account"}
                       </P>
@@ -443,44 +448,43 @@ const RegisterWithBgImageContainer = () => {
                                   {placeunderStatus ? <p className="text-danger ms-4">Not Available</p> : <span>{placeunderName}</span>}
                                   <ErrorMessage name="PlaceUnderUserName" component="div" className="text-danger" />
                               </Col> */}
-                          <Col md="6">
-                              <Label className="col-form-label">Country</Label>
-                              <CountryWithFlag
-                                SetCountryName={handleCountryChange}
-                              />
+                          <Col md="12">
+                            <Label className="col-form-label">Country</Label>
+                            <CountryWithFlag
+                              SetCountryName={handleCountryChange}
+                            />
                             <ErrorMessage
                               name="CountryId"
                               component="div"
                               className="text-danger"
                             />
                           </Col>
-                          <Col md="6">
-                              <Label className="col-form-label">
-                                Select Position
-                              </Label>
-                              <Row>
-                                <Col xs="6" className="col-form-label px-1 pt-0">
-                                  <label className="redioLeble mb-0 radio-btn mt-0">
-                                    <Field
-                                      type="radio"
-                                      name="Position"
-                                      value="1"
-                                     
-                                    />
-                                    <span className="ms-2">Left</span>
-                                  </label>
-                                </Col>
-                                <Col xs="6" className="col-form-label px-1 pt-0">
-                                  <label className="redioLeble mb-0 radio-btn mt-0">
-                                    <Field
-                                      type="radio"
-                                      name="Position"
-                                      value="2"
-                                    />
-                                    <span className="ms-2">Right</span>
-                                  </label>
-                                </Col>
-                              </Row>
+                          <Col md="6" hidden>
+                            <Label className="col-form-label">
+                              Select Position
+                            </Label>
+                            <Row>
+                              <Col xs="6" className="col-form-label px-1 pt-0">
+                                <label className="redioLeble mb-0 radio-btn mt-0">
+                                  <Field
+                                    type="radio"
+                                    name="Position"
+                                    value="1"
+                                  />
+                                  <span className="ms-2">Left</span>
+                                </label>
+                              </Col>
+                              <Col xs="6" className="col-form-label px-1 pt-0">
+                                <label className="redioLeble mb-0 radio-btn mt-0">
+                                  <Field
+                                    type="radio"
+                                    name="Position"
+                                    value="2"
+                                  />
+                                  <span className="ms-2">Right</span>
+                                </label>
+                              </Col>
+                            </Row>
                             <ErrorMessage
                               name="Position"
                               component="div"
@@ -525,20 +529,66 @@ const RegisterWithBgImageContainer = () => {
                       </div> */}
 
                       <div className="form-group">
-                        <Label className="col-form-label">Email Address</Label>
-                        <div className="position-relative">
-                          <Field
-                            type="email"
-                            name="EmailId"
-                            className="form-control"
-                            placeholder="Enter Email Id"
-                          />
-                        </div>
-                        <ErrorMessage
-                          name="EmailId"
-                          component="div"
-                          className="text-danger"
-                        />
+                        <Row className="g-2">
+                          <Col xs="6">
+                            <Label className="col-form-label">Username</Label>
+                            <div className="position-relative">
+                              <Field
+                                name="PlaceUnderUserName"
+                                className="form-control"
+                                type="text"
+                                onBlur={(
+                                  e: React.FocusEvent<HTMLInputElement>
+                                ) => {
+                                  setFieldValue(
+                                    "PlaceUnderUserName",
+                                    e.target.value
+                                  );
+                                  handleSponsorChange(
+                                    e,
+                                    values,
+                                    setFieldValue,
+                                    "PlaceUnder"
+                                  );
+                                }}
+                                value={values.PlaceUnderUserName}
+                                placeholder="Enter Username"
+                              />
+                            </div>
+                            {placeunderStatus ? (
+                              <p className="text-danger ms-4">Not Available</p>
+                            ) : (
+                              <span>
+                                <p className="text-success ms-4">
+                                  {placeunderName}
+                                </p>
+                              </span>
+                            )}
+                            <ErrorMessage
+                              name="PlaceUnderUserName"
+                              component="div"
+                              className="text-danger"
+                            />
+                          </Col>
+                          <Col xs="6">
+                            <Label className="col-form-label">
+                              Email Address
+                            </Label>
+                            <div className="position-relative">
+                              <Field
+                                type="email"
+                                name="EmailId"
+                                className="form-control"
+                                placeholder="Enter Email Id"
+                              />
+                            </div>
+                            <ErrorMessage
+                              name="EmailId"
+                              component="div"
+                              className="text-danger"
+                            />
+                          </Col>
+                        </Row>
                       </div>
                       <div className="form-group">
                         <Label className="col-form-label">OTP</Label>
@@ -564,9 +614,9 @@ const RegisterWithBgImageContainer = () => {
                               right: "2px",
                               top: "4px",
                               background:
-                                "linear-gradient(180deg, #FFD700, #FFC107, #B8860B)",
-                              borderColor: "#d0b163",
-                              color: "#000",
+                                "linear-gradient(89deg, rgb(41, 136, 239), rgb(131, 214, 253))",
+                              borderColor: "rgb(147, 202, 255)",
+                              color: "#fff",
                             }}
                           >
                             {isOtpSent ? FormatTime(otpTimer) : `Send OTP`}{" "}
@@ -585,12 +635,6 @@ const RegisterWithBgImageContainer = () => {
                         <Btn
                           block
                           type="submit"
-                          style={{
-                            background:
-                              "linear-gradient(180deg, #FFD700, #FFC107, #B8860B)",
-                            borderColor: "#d0b163",
-                            color: "#000",
-                          }}
                           disabled={isSubmitting}
                           className="w-100 mt-3 btn-primary"
                         >
@@ -600,15 +644,12 @@ const RegisterWithBgImageContainer = () => {
                       <div className="login-social-title">
                         <H6>Sign Up With</H6>
                       </div>
-                      <P
-                        className="mt-4 mb-0 text-center"
-                        style={{ color: "#d0b163" }}
-                      >
+                      <P className="mt-4 mb-0 text-center">
                         {"Already have an account?"}
                         <Link
                           className="ms-2"
                           to={`${process.env.PUBLIC_URL}/login`}
-                          style={{ color: "#d0b163" }}
+                          style={{ color: "rgb(147, 202, 255)" }}
                         >
                           Sign In
                         </Link>

@@ -176,7 +176,7 @@ const GenerationTreeContainer = () => {
                                             <td>${details.TopUpAmount}</td>
                                         </tr>
                                         <tr>
-                                            <td>Designation</td>
+                                            <td>Rank</td>
                                             <td>{details.RankName}</td>
                                         </tr>
                                         <tr>
@@ -184,7 +184,7 @@ const GenerationTreeContainer = () => {
                                             <td>{details.IDActivationDate}</td>
                                         </tr>
                                         <tr>
-                                            <td>Bot Status</td>
+                                            <td>Status</td>
                                             <td>{details.BotStatus}</td>
                                         </tr>
                                         <tr>
@@ -203,18 +203,7 @@ const GenerationTreeContainer = () => {
                                             <td>Total Business</td>
                                             <td>${details.TotalBusiness}</td>
                                         </tr>
-                                        <tr>
-                                            <td>Stronger Team Bot Count</td>
-                                            <td>{details.LeftTeamBotCount}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Weaker Team Bot Count</td>
-                                            <td>{details.RightTeamBotCount}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Total Bot Count</td>
-                                            <td>{details.TotalBotCount}</td>
-                                        </tr>
+                                       
                                     </tbody>
                                 </table>
                             </div>

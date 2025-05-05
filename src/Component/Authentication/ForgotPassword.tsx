@@ -58,7 +58,10 @@ const Login = () => {
   };
 
   return (
-    <Container fluid className="p-0">
+    <Container fluid className="p-0 video-container">
+          <video autoPlay muted loop playsInline className="background-video">
+            <source src={dynamicImage("loginbg.mp4")} type="video/mp4" />
+          </video>
       {loading && <Loader />}
       <Row className="m-0">
         <Col xs="12" className="p-0">
@@ -70,13 +73,11 @@ const Login = () => {
                     <Image
                       className="img-fluid for-light"
                       src={dynamicImage("logo/GoldenLogo.png")}
-                      style={{ height: "130px", margin: "auto" }}
                       alt="logo"
                     />
                     <Image
                       className="img-fluid for-dark"
                       src={dynamicImage("logo/GoldenLogo.png")}
-                      style={{ height: "130px", margin: "auto" }}
                       alt="darkLogo"
                     />
                   </Link>
@@ -123,7 +124,7 @@ const Login = () => {
                       </div>
                       <P className="mt-4 mb-0 text-center">
 
-                        <Link className="ms-2" style={{ color: "#d0b163" }} to={`${process.env.PUBLIC_URL}/login`}>
+                        <Link className="ms-2" style={{ color: "rgb(248 248 248)" }} to={`${process.env.PUBLIC_URL}/login`}>
                           Back to Login-In
                         </Link>
                       </P>

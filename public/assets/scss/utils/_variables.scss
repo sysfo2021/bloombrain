@@ -1,11 +1,11 @@
 :root {
     --light-color: #c6a04d;
     --card-color: #fff;
-    --body-font-color: #3D3D47;
-    --light-font: #767676;
+    --body-font-color: #ffffff;
+    --light-font: #ffffff;
     --gray-60: #666666;
     --shape-border: #6A7185;
-    --body-color: #F9FAFC;
+    --body-color: #010533;
     --dark-gray:#bebbbb;
     --pitch-color: #fe8a7d;
     --light-gray: #eeeeee;
@@ -13,7 +13,7 @@
     --footer-icon: #FF3636;
     --light-semi-gray :#efefef;
     --photoswipe-border: #ddd;
-    --theme-default: #e6b855;
+    --theme-default: #ffffff;
     --theme-secondary: #C280D2;
     --light2: #F5F6F9;
     --star-color: #ffa800;
@@ -105,7 +105,7 @@ html[data-theme="dark"]{
     --light-color: var(--body-color);
     --card-color: #000;
     --card-header-color: #141414;
-    --body-color: #22262c;
+    --body-color: #010533;
     --body-font-color: rgba(255, 255, 255, 0.5);
     --light-font: rgba(255, 255, 255, 0.8);
     --light-border: 1px dashed rgba(233,226,226,0.3);

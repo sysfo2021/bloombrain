@@ -48,9 +48,10 @@ $colors: (
 @each $key, $val in $colors {
     .btn-#{$key} {
       
-      background-color: $white;
-      border: 1px solid $white;
-      border-radius: 5px;
+      background: linear-gradient(89deg, rgb(41 136 239), rgb(131, 214, 253));
+      color: #ffffff !important;
+      border-radius: 50px;
+     border: none;
      
       &:hover, &:focus, &:active:focus, &.show  {
         // background-color: #646363;
@@ -71,8 +72,8 @@ $colors: (
       }
     }
     .btn-light-#{$key} {
-      background-color: rgb(127 123 111 / 43%);
-      color: $val !important;
+      background-color:rgb(40 77 130);
+      color: #fff !important;
      
       span{
         [data-theme="dark"] & {
@@ -416,11 +417,8 @@ $btn-color in (primary, $primary-color),
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active:focus, .btn-primary.show{
   color: #fff !important;
   background-color: #454545;
-  border:1px solid #454545;
+  border:none !important;
   
-}
-.btn-primary {
-  color:#000 !important;
 }
 
 /**=

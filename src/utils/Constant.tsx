@@ -2,15 +2,15 @@ export const Href = "#javascript";
 
 // Login Form
 export const CreateAccount = "Create Account";
-export const DoNotAccount = "Don't have account?";
+export const DoNotAccount = "Don't have an account?";
 export const EmailAddress = "Email Address";
 export const UserName = "Username";
 export const ForgotPassword = "Forgot password?";
 export const Password = "Password";
 export const RememberPassword = "Remember password";
 export const SignIn = "Sign In";
-export const SignInAccount = "Sign in to account";
-export const SignInWith = "Or";
+export const SignInAccount = "Welcome Back!";
+export const SignInWith = "--------- Or ---------";
 export const FacebookHeading = "facebook";
 export const TwitterHeading = "twitter";
 export const LinkedInHeading = "LinkedIn";
@@ -60,6 +60,7 @@ export const Monthly = "Monthly";
 export const Yearly = "Yearly";
 export const AllIncomeHeading = "All Income";
 export const TotalInvestmentHeading = "Business Statistics";
+export const CarryForwardHeading = "Carry Forward Business Statistics";
 export const MonthlyOverviewHeading = "Monthly Overview";
 export const Progress = "Progress";
 export const TaskSummaryHeading = "Team Overview";
@@ -75,7 +76,7 @@ export const DownloadAppHeading = "Total Business";
 export const Month = "Month";
 export const Year = "Year";
 export const Hours = "Hours";
-export const BusinessOverviewHeading = "Bot Statistics";
+export const BusinessOverviewHeading = "Current Business Statistics";
 export const YourName = "Your Name";
 export const TotalWithdrawal = "Total Withdrawal";
 export const TotalEarning = "Total Earning";
@@ -260,23 +261,6 @@ export const LevewiseRepotOption = [
     { optionName: '6' },
     { optionName: '7' },
     { optionName: '8' },
-    { optionName: '9' },
-    { optionName: '10' },
-    { optionName: '11' },
-    { optionName: '12' },
-    { optionName: '13' },
-    { optionName: '14' },
-    { optionName: '15' },
-    { optionName: '16' },
-    { optionName: '17' },
-    { optionName: '18' },
-    { optionName: '19' },
-    { optionName: '20' },
-    { optionName: '21' },
-    { optionName: '22' },
-    { optionName: '23' },
-    { optionName: '24' },
-    { optionName: '25' }
 ]
 
 

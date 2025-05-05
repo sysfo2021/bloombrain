@@ -15,6 +15,7 @@ h4,
 h5,
 h6 {
     margin: 0;
+    color: #ffffff;
 }
 h1 {
     font-size: $heading_1;
@@ -63,7 +64,7 @@ h5 {
         font-size: 15px;
     }
     [data-theme="dark"] & {
-        color: var(--light-font);
+        color: #fff;
     }
 }
 h6 {

@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { Col, Container, Label, Row } from "reactstrap";
 import { Btn, H2, H6, Image, P } from "../../AbstractElements";
 import { dynamicImage } from "../../Service";
-import Loader from '../../CommonElements/Loader/Loader';
+import Loader from "../../CommonElements/Loader/Loader";
 import {
   CreateAccount,
   DoNotAccount,
@@ -17,18 +17,15 @@ import {
   SignInAccount,
   SignInWith,
 } from "../../utils/Constant";
+import { encryptData, decryptData } from "../../utils/helper/Crypto";
 import {
-  encryptData,
-  decryptData,
-
-} from "../../utils/helper/Crypto";
-import {
-  LoginFormPropsType, LoginForminitialValues
+  LoginFormPropsType,
+  LoginForminitialValues,
 } from "../../Type/Forms/FormsType";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { truncate } from "fs";
-import { useLoginService } from '../../Service/Authentication/LoginService';
+import { useLoginService } from "../../Service/Authentication/LoginService";
 // Validation schema
 const LoginSchema = Yup.object().shape({
   userid: Yup.string().required("Username is required"),
@@ -36,53 +33,57 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
-
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const username = queryParams.get('username');
-  const password = queryParams.get('password');
-  const [FormFieldData, setFormFieldData] = useState<any>(null)
+  const username = queryParams.get("username");
+  const password = queryParams.get("password");
+  const [FormFieldData, setFormFieldData] = useState<any>(null);
   const { doLogin, loading } = useLoginService();
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     if (username && password) {
-      ProcessLogin()
+      ProcessLogin();
     }
-
-  }, [])
+  }, []);
   const SimpleLoginHandle = async (values: LoginFormPropsType) => {
     const { userid, password } = values;
-    const res = await doLogin({ procName: 'SolidityLogin', Para: '{"UserId":"' + userid + '","Password":"' + password + '"}' });
-    if (!res) return
+    const res = await doLogin({
+      procName: "SolidityLogin",
+      Para: '{"UserId":"' + userid + '","Password":"' + password + '"}',
+    });
+    if (!res) return;
     if (res[0]?.StatusCode == "1") {
       localStorage.setItem("clientId", encryptData(res[0]?.UserId?.toString()));
       localStorage.setItem("userToken", encryptData(res[0]?.UserToken));
       localStorage.setItem("UserName", res[0]?.UserName);
       localStorage.setItem("refURL", res[0]?.ReferralURL);
       localStorage.setItem("MemberName", res[0]?.MemberName);
-      localStorage.setItem('memberemail', res[0]?.EmailId);
-      localStorage.setItem('RankName', res[0]?.RankName)
+      localStorage.setItem("memberemail", res[0]?.EmailId);
+      localStorage.setItem("RankName", res[0]?.RankName);
       navigate(`${process.env.PUBLIC_URL}/dashboard`);
     } else {
       toast.error(res[0]?.msg);
     }
   };
   const ProcessLogin = async () => {
-    const res = await doLogin({ procName: 'SolidityLogin', Para: '{"UserId":"' + username + '","Password":"' + password + '"}' });
-    if (!res) return
+    const res = await doLogin({
+      procName: "SolidityLogin",
+      Para: '{"UserId":"' + username + '","Password":"' + password + '"}',
+    });
+    if (!res) return;
     if (res[0]?.StatusCode == "1") {
       localStorage.setItem("clientId", encryptData(res[0]?.UserId?.toString()));
       localStorage.setItem("userToken", encryptData(res[0]?.UserToken));
       localStorage.setItem("UserName", res[0]?.UserName);
       localStorage.setItem("refURL", res[0]?.ReferralURL);
       localStorage.setItem("MemberName", res[0]?.MemberName);
-      localStorage.setItem('memberemail', res[0]?.EmailId);
-      localStorage.setItem('RankName', res[0]?.RankName)
+      localStorage.setItem("memberemail", res[0]?.EmailId);
+      localStorage.setItem("RankName", res[0]?.RankName);
       const loginformData = {
         userid: username,
-        password: password
-      }
+        password: password,
+      };
       setFormFieldData(loginformData);
       setTimeout(() => {
         navigate(`${process.env.PUBLIC_URL}/dashboard`);
@@ -90,27 +91,33 @@ const Login = () => {
     } else {
       toast.error(res[0]?.msg);
     }
-  }
+  };
   return (
-    <Container fluid className="p-0">
+    <Container fluid className="p-0 video-container">
+      <video autoPlay muted loop playsInline className="background-video">
+        <source src={dynamicImage("loginbg.mp4")} type="video/mp4" />
+      </video>
       {loading && <Loader />}
       <Row className="m-0">
         <Col xs="12" className="p-0">
-          <div className="login-card login-dark" style={{ backgroundColor: "transparent",justifyContent:'center' }}>
+          <div
+            className="login-card login-dark"
+            style={{ backgroundColor: "transparent", justifyContent: "center" }}
+          >
             <div>
-              <div className="login-main" style={{ padding:'30px',backgroundColor: "rgb(1 1 1 / 46%)", backdropFilter:"blur(10px)",boxShadow:"rgb(29 29 29) 1px 1px 7px 0px", }}>
+              <div
+                className="login-main"
+              >
                 <div>
                   <Link className="logo text-center" to={Href}>
                     <Image
                       className="img-fluid for-light"
                       src={dynamicImage("logo/GoldenLogo.png")}
-                      style={{ margin: "auto" }}
                       alt="logo"
                     />
                     <Image
                       className="img-fluid for-dark"
                       src={dynamicImage("logo/GoldenLogo.png")}
-                      style={{  margin: "auto" }}
                       alt="darkLogo"
                     />
                   </Link>
@@ -126,7 +133,9 @@ const Login = () => {
                   {({ isSubmitting }) => (
                     <Form className="theme-form">
                       <H2 className="text-center mt-1">{SignInAccount}</H2>
-                      <P className="text-center text-white">{"Enter your User ID & Password to login"}</P>
+                      <P className="text-center text-white">
+                        {"Please sign in to your account."}
+                      </P>
                       <div className="form-group">
                         <Label className="col-form-label">{UserName}</Label>
                         <Field
@@ -135,7 +144,11 @@ const Login = () => {
                           placeholder="Enter Username"
                           className="form-control"
                         />
-                        <ErrorMessage name="userid" component="div" className="text-danger" />
+                        <ErrorMessage
+                          name="userid"
+                          component="div"
+                          className="text-danger"
+                        />
                       </div>
                       <div className="form-group">
                         <Label className="col-form-label">{Password}</Label>
@@ -146,19 +159,30 @@ const Login = () => {
                             placeholder="Enter Password"
                             className="form-control"
                           />
-                          <div className="show-hide" onClick={() => setShow(!show)}>
+                          <div
+                            className="show-hide"
+                            onClick={() => setShow(!show)}
+                          >
                             <span className="show"> </span>
                           </div>
                         </div>
-                        <ErrorMessage name="password" component="div" className="text-danger" />
+                        <ErrorMessage
+                          name="password"
+                          component="div"
+                          className="text-danger"
+                        />
                       </div>
                       <div className="form-group mb-0 checkbox-checked">
                         <div className="form-check checkbox-solid-info">
-                          <Field type="checkbox" id="checkbox1" className="form-check-input" />
+                          <Field
+                            type="checkbox"
+                            id="checkbox1"
+                            className="form-check-input"
+                          />
                           <Label className="text-muted" htmlFor="checkbox1">
                             {RememberPassword}
                           </Label>
-                          <Link  to={`${process.env.PUBLIC_URL}/forgotpassword`}>
+                          <Link to={`${process.env.PUBLIC_URL}/forgotpassword`}>
                             {ForgotPassword}
                           </Link>
                         </div>
@@ -166,11 +190,11 @@ const Login = () => {
                           <Btn
                             color="primary"
                             block
-                            className="w-100 text-white btnCustomcolor"
+                            className="w-100 text-white Loginbutton"
                             type="submit"
                             disabled={isSubmitting}
                           >
-                            {SignIn}
+                           <span>{SignIn}</span>
                           </Btn>
                         </div>
                       </div>
@@ -179,7 +203,11 @@ const Login = () => {
                       </div>
                       <P className="mt-4 mb-0 text-center">
                         {DoNotAccount}
-                        <Link className="ms-2" style={{ color: "rgb(255 244 0)" }} to={`${process.env.PUBLIC_URL}/register`}>
+                        <Link
+                          className="ms-2"
+                          style={{ color: "rgb(147 202 255)" }}
+                          to={`${process.env.PUBLIC_URL}/register`}
+                        >
                           {CreateAccount}
                         </Link>
                       </P>

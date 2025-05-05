@@ -7,7 +7,7 @@ import TaskSummaryLeft from "./TaskSummaryLeft";
 const TaskSummary = (props:any) => {
   const {TeamData} = props;
   return (
-    <Col xl="5" md="6">
+    <Col sm="12" md="8" lg="5" xl="5">
        <CardHeaderCommon headClass="pb-0" title={TaskSummaryHeading} firstItem={Weekly} secondItem={Monthly} thirdItem={Yearly} />
       <Card className="summary-card ecommerce-dashboard ">
         <CardBody className="">

@@ -27,7 +27,7 @@ export const RegistrationForminitialValues: RegistrationFormPropsType = {
     PlaceUnderUserName:"",
     FirstName: "",
     MobileNo: "",
-    Position:"",
+    Position:"0",
     CountryId: "",
     EmailId: "",
     OTP: "",

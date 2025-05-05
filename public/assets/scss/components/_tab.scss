@@ -426,9 +426,9 @@ $nav-color: $primary-color,
   .nav-tabs {
     .nav-link {
       &.font-#{$font-name} {
-        color: $font-color !important;
+        color: #ffffff !important;
         &.active{
-          color: $font-color !important;
+          color: #ffffff !important;
         }
       }
     }

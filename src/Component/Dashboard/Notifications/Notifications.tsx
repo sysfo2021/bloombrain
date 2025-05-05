@@ -10,7 +10,7 @@ import { IoIosNotificationsOff } from "react-icons/io";
 const Notifications = () => {
   const UserName = localStorage.getItem('MemberName')
   return (
-    <Col xl="6" sm="6" >
+    <Col sm="12" md="6" xl="6"  >
       <Card className="notification-card text-center boxshadow">
         <CardHeaderCommon headClass="pb-3 pt-0" title={NotificationsHeading} firstItem={Weekly} secondItem={Monthly} thirdItem={Yearly}/>
         <CardBody className="text-center px-5 py-5 px-lg-3">

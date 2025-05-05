@@ -1013,10 +1013,14 @@ body {
   color: #ffffff !important;
 }
 .bgImage1 {
-  background: url("../../assets/images/profileBack.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  border-radius: 10px;
+  padding: 0px;
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(30, 60, 114, 0.4);
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
 }
 .bgImage2 {
 }
@@ -1032,33 +1036,34 @@ body {
 }
 .btnBg div {
   color: #ffffff !important;
-  font-family: "Comfortaa", serif !important;
+  font-family: "Nunito Sans", sans-serif !important;
 }
 .card {
-  font-family: "Comfortaa", serif !important;
+  font-family: "Nunito Sans", sans-serif !important;
 }
 h4 {
-  font-family: "Comfortaa", serif !important;
+  font-family: "Nunito Sans", sans-serif !important;
 }
 .CardBody,
 .DownloadBtnHeading {
-  font-family: "Comfortaa", serif !important;
+  font-family: "Nunito Sans", sans-serif !important;
 }
 .page-sidebar .sidebar-link span {
-  font-family: "Comfortaa", serif !important;
+  font-family: "Nunito Sans", sans-serif !important;
 }
 .page-title h3,
 .page-title .h3 {
-  font-family: "Comfortaa", serif !important;
+  font-family: "Nunito Sans", sans-serif !important;
 }
 .page-title .breadcrumb-item {
-  font-family: "Comfortaa", serif !important;
+  font-family: "Nunito Sans", sans-serif !important;
 }
 .f-right {
   float: right;
 }
 .card-header h4 {
   font-size: 16px !important;
+  color: #fff !important;
 }
 .default-dashboard .investing-card .investing {
   margin: 15px 0px 0px !important;
@@ -1070,13 +1075,13 @@ h4 {
   width: auto !important;
 }
 .bg-light1 {
-  background-color:rgb(115 103 115 / 30%);
+  background-color:#2f54889e;
 }
 .bg-light2 {
-  background-color:rgb(115 103 115 / 30%);
+  background-color:#2f54889e;
 }
 .bg-light3 {
-  background-color:rgb(115 103 115 / 30%);
+  background-color:#2f54889e;
 }
 .page-wrapper .page-body-wrapper .page-body {
   background: #2703466b;
@@ -1154,25 +1159,41 @@ h4 {
 //     border-bottom-color: #2d2d2d;}
 
     .sidebar-submenu span{
-      color:#000 !important;
+      color:#ffffff !important;
     }
     .page-sidebar .sidebar-menu .svg-menu{
-      stroke:#000 !important;
+      stroke:#00BCD4 !important;
     }
     .page-sidebar .sidebar-menu .sidebar-list.active .sidebar-link svg.feather{
-      stroke:#000 !important;
+      stroke:#00BCD4 !important;
     }
     .page-sidebar .sidebar-link svg.feather{
-      stroke:#000 !important;
+      stroke:#00BCD4 !important;
     }
     // header ul[class*=header-] > li:nth-child(n+2){
     //   background-color: #474747 !important;
     // }
     header ul[class*=header-] > li .badge{
-      background-color: #f5a84f !important;
+      background-color:#9934fd !important;
     }
     .btnCustomcolor{
-      background: linear-gradient(rgb(255, 215, 0), rgb(255, 193, 7), rgb(184, 134, 11)) !important;
-      color:#000 !important;
+      background: linear-gradient(89deg, rgb(41 136 239), rgb(131, 214, 253));
+      color: #ffffff !important;
       border: none !important;
+    }
+    .eScABW{
+      background-color: rgb(100 187 249) !important
+      ;
+    }
+    .iAvmh{
+      background-color: rgb(100 187 249 / 3%) !important;
+
+      &:hover{
+        color: rgb(255, 255, 255);
+        background-color: #7373be30 !important;
+        transition-duration: 0.15s;
+        transition-property: background-color;
+        border-bottom-color: #7373be30 !important;
+        outline: #8484e654 solid 1px !important;
+      }
     }

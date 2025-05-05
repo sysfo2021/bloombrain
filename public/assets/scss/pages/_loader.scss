@@ -13,7 +13,7 @@ $offset: $lat - 8px;
   justify-content: center;
   flex-direction: column;
   position: fixed;
-  background-color: #000 !important;
+  background-color: #010533 !important;
   // background-image:url('../../images/LoaderBG.jpg')!important;
   background-size: cover;
   background-repeat: no-repeat;
@@ -24,7 +24,7 @@ $offset: $lat - 8px;
     width: 100%;
     height: 100%;
     transform: rotate(165deg);
-    background-color: #000;
+    background-color: #010533;
     &:before,
     &:after {
       content: '';
