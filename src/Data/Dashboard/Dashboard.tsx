@@ -138,22 +138,27 @@ export const AccountOverviewData = [
       number: "5-090-2024",
       status: "Bot Status",
     },
+    {
+      color: "primary",
+      number: "5-05-2025",
+      status: "Left Days",
+    },
   ];
 
   export const tokenDetails = [
-    {
-      color: "primary",
-      count: "457",
-      title: "Total Withdrawal",
-      class: "client",
-      chartData: totalClientsChartData,
-    },
+    
     {
       color: "secondary",
       count: "541",
       title: "Total Earning",
       class: "project",
       chartData: newProjectChartData,
+    },{
+      color: "primary",
+      count: "457",
+      title: "Total Withdrawal",
+      class: "client",
+      chartData: totalClientsChartData,
     },
   ];
 

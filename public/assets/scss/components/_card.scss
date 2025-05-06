@@ -32,9 +32,9 @@
     background-repeat: no-repeat;
     line-height: 50px;
 
-    @include media-breakpoint-down(sm) {
-      padding: 16px;
-    }
+    // @include media-breakpoint-down(sm) {
+    //   padding: 16px;
+    // }
     h4 {
       text-transform: capitalize;
       [data-theme="dark"] & {

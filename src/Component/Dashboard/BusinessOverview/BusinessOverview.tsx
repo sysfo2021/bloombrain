@@ -3,18 +3,20 @@ import CardHeaderCommon from "../../../CommonElements/CommonCardHeader/CardHeade
 import { BusinessOverviewHeading, Monthly, Weekly, Yearly } from "../../../utils/Constant";
 import BusinessOverviewDetails from "./BusinessOverviewDetails";
 import LegBusinessOverview from "./LegBusinessOverview";
+import TotalInvestment from "../TotalInvestment/TotalInvestment";
 
 const CategoryOverview = (props:any) => {
   return (
-    <Col sm="12" md="12" lg="5" xl="4" className="ecommerce-dashboard ">
+    <Col sm="12" md="12" lg="8" xl="7" className="ecommerce-dashboard ">
        <CardHeaderCommon headClass="pb-0" title={BusinessOverviewHeading} firstItem={Weekly} secondItem={Monthly} thirdItem={Yearly} />
       <Card className="">
         <CardBody className="category" style={{paddingTop:'0px'}}>
           <Row>
-            <Col xl="6" xs="6">
+            <TotalInvestment TotalInvestmentData={props?.TotalinvestmentData} />
+            <Col xl="3" xs="6">
               <LegBusinessOverview LegBOverviewData={props?.LegBViewdata}/>
             </Col>
-            <Col xl="6" xs="6">
+            <Col xl="3" xs="6">
               <BusinessOverviewDetails  overViewdata={props?.BOverviewData}/>
             </Col>
           </Row>
