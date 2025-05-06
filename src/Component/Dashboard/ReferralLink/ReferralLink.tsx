@@ -15,11 +15,11 @@ const ReferralLink = () => {
     <div className="referral-tab">
       <div className="tab-buttons">
         <button className={activeTab === "left" ? "active" : ""} onClick={() => setActiveTab("left")}>
-          Left Referral
+          Copy Your Referral Link 
         </button>
-        <button className={activeTab === "right" ? "active" : ""} onClick={() => setActiveTab("right")}>
+        {/* <button className={activeTab === "right" ? "active" : ""} onClick={() => setActiveTab("right")}>
           Right Referral
-        </button>
+        </button> */}
       </div>
       <div className="tab-content">
         <input

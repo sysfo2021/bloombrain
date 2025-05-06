@@ -34,6 +34,7 @@ import FireworkCanvas from '../firework/FireworkCanvas';
 import DailyBotTrading from './DailyBotTrading/DailyBotTrading';
 import ThirdPartyCard from './Other_Party_Compotent/ThirdPartyCard';
 import Other_Wallet from './OtherWallet/Other_Wallet';
+import CountdownTimer from '../CountdownTimer/CountdownTimer';
 
 const ContainerDashboard = () => {
   const { fetchDashboardData, loading } = useDashboardService();
@@ -106,13 +107,14 @@ const ContainerDashboard = () => {
       setactOverview(objectEntriesToArray({
         'Activation': data[0]?.ActivationDate == "" ? "--" : data[0]?.ActivationDate,
         "Registration": data[0]?.RegistrationDate,
-        "Status": data[0]?.BotStatus
+        "Status": data[0]?.BotStatus,
+        "Days Left": `${data[0]?.DaysLeft}`,
       }))
 
       setmyWallets(objectEntriesToArray({
         "Commission Wallet": `$${data[0]?.CommissionBalance}`,
         "Deposit Wallet": `$${data[0]?.ProductWallet}`,
-        "Days Left": `${data[0]?.DaysLeft}`,
+        // "Days Left": `${data[0]?.DaysLeft}`,
       }))
 
       // settokenData([
@@ -131,12 +133,12 @@ const ContainerDashboard = () => {
       }))
       setBusniessoverView(objectEntriesToArray({
         'Right Business': data[0]?.RightTeamBotCount,
-        'Total Right': data[0]?.TotalRightTeamBotCount
+        'Top Rank': data[0]?.TotalRightTeamBotCount
       }))
 
       setLegBOverview(objectEntriesToArray({
         "Left Business": data[0]?.LeftTeamBotCount,
-        "Total Left": data[0]?.TotalLeftTeamBotCount,
+        "Current Rank": data[0]?.TotalLeftTeamBotCount,
       }))
 
       setTotalInvestment(objectEntriesToArray({
@@ -157,17 +159,17 @@ const ContainerDashboard = () => {
           title: "Total",
           count: data[0]?.MyTeamCount,
         },
-        {
-          icon: dynamicImage(`InTeam.png`),
-          color: "bg-light2",
-          title: "InDirect",
-          count: data[0]?.InDirectTeamCount,
-        },
+       
         {
           icon: dynamicImage(`DiTeam.png`),
           color: "bg-light3",
           title: "Direct",
           count: data[0]?.SponsorCount,
+        }, {
+          icon: dynamicImage(`InTeam.png`),
+          color: "bg-light2",
+          title: "InDirect",
+          count: data[0]?.InDirectTeamCount,
         },
       ];
 
@@ -247,7 +249,9 @@ const ContainerDashboard = () => {
           <ProfileGreet profileName={profileName} loadingStatus={loading} />
           <AccountOverview actOverviewData={actOverview} LastLogin={LastLogin} myWallets={myWallets} />
           <Investing IncomesData={incomeData} />
-          <TotalInvestment TotalinvestmentData={totalInvestment} />
+          {/* <TotalInvestment TotalinvestmentData={totalInvestment} /> */}
+          <Col className='d-block d-md-none'>
+          <CountdownTimer targetDate="2025-06-01T00:00:00" /></Col>
           <BusinessOverview LegBViewdata={LegBOverview} BOverviewData={busniessoverView} />
           <TaskSummary TeamData={TeamData} />         
           <DownloadApp downloadappData={downloadappData} />

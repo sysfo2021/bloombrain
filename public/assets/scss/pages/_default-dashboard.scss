@@ -159,7 +159,7 @@
 .default-dashboard {
   .profile-greeting {
     .card-body {
-      background-image: url(../../images/dashboard1/bg.png);
+      // background-image: url(../../images/dashboard1/bg.png);
       background-repeat: no-repeat;
       background-position: center right;
       display: block;
@@ -187,9 +187,6 @@
         background-image: none !important;
         padding: 15px !important;
       }
-      @media (min-width: 1235px) and (max-width: 1399.98px) {
-        height: 248px;
-      }
       @include media-breakpoint-up(sm) {
         @media (max-width: 1020px) {
           background-position: right -3% bottom 138%;
@@ -214,10 +211,6 @@
           padding: 15px !important;
         }
       }
-      @include media-breakpoint-down(md) {
-        height: 250px;
-        background-image: none !important;
-      }
       @media (max-width: 500px) {
         background-position: right -38% bottom 98%;
       }
@@ -237,12 +230,12 @@
           @media (max-width: 815px) {
             text-align: left;
             height: 100%;
-            padding: 20px 0px !important;
+            padding: 20px 0px 0 !important;
           }
         }
         @media (max-width: 420px) {
           height: 100%;
-          padding: 20px 0px !important;
+          padding: 20px 0px 0 !important;
         }
       }
     }
@@ -1676,13 +1669,13 @@ h5,
         ) !important;
         box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2) !important;
         border: none;
-        padding: 10px 20px;
+        padding: 10px 10px;
         border-radius: 30px;
         color: #ffffff;
         font-weight: 600;
         cursor: pointer;
         transition: background 0.3s;
-        font-size: 14px;
+        font-size: 12px;
       }
 
       &:hover {
@@ -1729,4 +1722,109 @@ h5,
 
 .drop-shodow {
   filter: drop-shadow(0px 0px 8px #80d3fd);
+}
+.height-100 {
+  height: 100%;
+}
+.wallet-bg {
+  @media screen and (max-width: 768px) {
+    margin-top: 15px;
+  }
+}
+.wallet-bg:nth-child(2) .wallet-card {
+  background: linear-gradient(176deg, #965ae0, transparent);
+  // background: rgb(150 90 224);
+}
+.wallet-bg:nth-child(3) .wallet-card {
+  background: linear-gradient(0deg, #45606e, #6b8897);
+  // background: #CDDC39;
+}
+.wallet-card {
+  width: 100%;
+  padding: 20px 10px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+.wallet-image {
+  margin-top: 5px;
+  padding: 10px;
+
+  img {
+    width: 90px;
+    height: 100%;
+  }
+}
+.wallet-value {
+  font-size: 45px;
+  font-weight: bold;
+  color: #fff;
+  margin-top: 16px;
+}
+.wallet-name {
+  font-size: 14px;
+  color: #fff;
+  margin-top: 5px;
+}
+.rank-badge {
+  background-color: #2196f3;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+.rank-badge:nth-child(2) {
+  background-color: #ff9800;
+}
+.rank-badge:nth-child(3) {
+  background-color: #4caf50;
+}
+.countdown-wrapper {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (max-width: 767px) {
+    justify-content: left;
+    align-items: center;
+    background: #0e123d;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+.time-box {
+  background: linear-gradient(2deg, #74b0fe, #144577c9);
+  color: #fff;
+  gap: 3px;
+  height: 23px;
+  border-radius: 4px;
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  display: flex;
+  padding: 1px 9px;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  @media only screen and (max-width: 767px) {
+    gap: 6px;
+    height: 35px;
+    font-size: 20px;
+    display: flex;
+    padding: 4px 13px;
+  }
+
+  .number {
+    font-weight: bold;
+  }
+
+  .short-label {
+    font-size: 12px;
+    @media only screen and (max-width: 767px) {
+      font-size: 20px;
+    }
+  }
 }

@@ -5,12 +5,15 @@ import CardHeaderDropdown from "./CardHeaderDropdown";
 import { CardHeaderCommonType } from "../../Type/Layout/CommonElements/CommonCardHeader";
 import { Btn, H2, H6, Image, P } from "../../AbstractElements";
 import { dynamicImage } from "../../Service";
+import CountdownTimer from "../../Component/CountdownTimer/CountdownTimer";
 
 const CardHeaderCommon = ({title,subTitle,headClass,mainTitle,firstItem,secondItem,thirdItem,borderClass, coupon, coponcount, Openmodal}:CardHeaderCommonType) => {  
   return (
     <CardHeader className={`${headClass} ${!borderClass === true ? "card-no-border" : ""} `}>
       <div className="d-flex justify-content-between"><H4>{title}</H4> 
-       {title === "Bot Royalty" ? <Image style={{width:'35px'}} src={dynamicImage('achievement.png')} alt="award"/> : undefined}
+      {title === "Binary Business Statistics" && (
+        <div className="d-none d-md-block"><CountdownTimer targetDate="2025-06-01T00:00:00" /></div>
+      )}
       {coupon && coponcount > 1 ? <button  className="btn btn-primary btn-font px-1 " onClick={Openmodal}>
       <small>Check Your Coupons {coponcount}</small> 
         </button>: undefined} </div>
