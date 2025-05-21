@@ -10,7 +10,7 @@ const DownloadApp = ({ downloadappData }: any) => {
   const [tabId, setTabId] = useState<string>("mon-tab")
   return (
    
-      <Col sm="12" md="4" xl="4" >
+      <Col sm="12" md="2" xl="2" >
         <CardHeaderCommon headClass="pb-20" title={DownloadAppHeading} firstItem={Weekly} secondItem={Monthly} thirdItem={Yearly} />
         <Card className="schedule-card">
           <CardBody>

@@ -11,3 +11,13 @@ export const P2PForminitialValues: P2PPropType = {
     ToUsername:localStorage.getItem("UserName") as string,
     OTP: "",
 };
+
+export interface PlaceMemberPPropType {
+    Username: string,
+    Position:string
+}
+// Create initial values based on the LoginFormPropsType interface
+export const PlaceMemberForminitialValues: PlaceMemberPPropType = {
+    Username:"",
+    Position: "",
+};

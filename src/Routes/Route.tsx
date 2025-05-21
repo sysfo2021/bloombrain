@@ -57,7 +57,7 @@ import BotMatchingIncome from "../Pages/Payout/BotMatchingIncome";
 import ClubIncomes from "../Pages/Payout/ClubIncomes";
 import IBIncomes from "../Pages/Payout/IBIncomes";
 import MT5Acccount from "../Pages/MT5Account/ActivateMT5Act";
-
+import PlacementBox from '../Pages/TeamOverviews/MemberPlacement'
 const routes = [
 
   // Sample Page
@@ -123,6 +123,7 @@ const routes = [
   { path: `${process.env.PUBLIC_URL}/package`, Component: <Package /> },
   { path: `${process.env.PUBLIC_URL}/packagehistory`, Component: <PackageHistory />},
   { path: `${process.env.PUBLIC_URL}/binarytree`, Component: <Geneaology /> },
+  { path: `${process.env.PUBLIC_URL}/placement`, Component: <PlacementBox /> },
 
 ]
 
