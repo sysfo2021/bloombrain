@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 interface CountdownTimerProps {
-  targetDate: string;
+  targetDate: string; // Assuming this is already in Dubai time
 }
 
 const CountdownTimer = ({ targetDate }: CountdownTimerProps) => {

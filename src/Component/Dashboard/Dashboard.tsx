@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody } from "reactstrap";
 import { Dashboard, DashboardPage } from "../../utils/Constant";
 import { Btn, H2, H6, Image, LI, P, UL } from "../../AbstractElements";
-import { useSweetAlert } from '../../Context/SweetAlertContext'
+import { useSweetAlert } from "../../Context/SweetAlertContext";
 import Breadcrumbs from "../../CommonElements/Breadcrumbs/Breadcrumbs";
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link } from "react-router-dom";
 //import Incomes from "./Incomes/Incomes";
 import Wallet from "./Wallet/Wallet";
 import ProfileGreet from "./ProfileGreet/ProfileGreet";
@@ -12,146 +12,187 @@ import AccountOverview from "./AccountOverview/AccountOverview";
 import Token from "./Token/Token";
 import TotalInvestment from "./TotalInvestment/TotalInvestment";
 import Investing from "./Investing/Investing";
-import AllIncome from "./AllIncome/AllIncome"
+import AllIncome from "./AllIncome/AllIncome";
 // importing Dashboard Chart Data
 
 // import MonthlyOverview from "./MonthlyOverview/MonthlyOverview";
 import TaskSummary from "./TaskSummary/TaskSummary";
+import NextRankSummary from "./TaskSummary/NextRankSummary";
 import TotalVisit from "./TotalVisit/TotalVisit";
 import Notifications from "./Notifications/Notifications";
 import CoursesHighlighted from "./CoursesHighlighted/CoursesHighlighted";
 import DownloadApp from "./DownloadApp/DownloadApp";
 import BusinessOverview from "./BusinessOverview/BusinessOverview";
-import { useDashboardService } from '../../Service/Dashboard/DashboardService';
-import { useCommonService } from '../../Service/CommonService/Commonservice';
-import { objectEntriesToArray } from '../../../src/utils/helper/opreaton'
+import { useDashboardService } from "../../Service/Dashboard/DashboardService";
+import { useCommonService } from "../../Service/CommonService/Commonservice";
+import { objectEntriesToArray } from "../../../src/utils/helper/opreaton";
 import { decryptData } from "../../utils/helper/Crypto";
 import { dynamicImage } from "../../Service";
-import { Modal, ModalHeader, ModalBody } from 'reactstrap';
-import DashboardSkeleton from '../Skeleton/DashboardSkeleton';
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import DashboardSkeleton from "../Skeleton/DashboardSkeleton";
 
-import FireworkCanvas from '../firework/FireworkCanvas';
-import DailyBotTrading from './DailyBotTrading/DailyBotTrading';
-import ThirdPartyCard from './Other_Party_Compotent/ThirdPartyCard';
-import Other_Wallet from './OtherWallet/Other_Wallet';
-import CountdownTimer from '../CountdownTimer/CountdownTimer';
+import FireworkCanvas from "../firework/FireworkCanvas";
+import DailyBotTrading from "./DailyBotTrading/DailyBotTrading";
+import ThirdPartyCard from "./Other_Party_Compotent/ThirdPartyCard";
+import Other_Wallet from "./OtherWallet/Other_Wallet";
+import CountdownTimer from "../CountdownTimer/CountdownTimer";
 
 const ContainerDashboard = () => {
   const { fetchDashboardData, loading } = useDashboardService();
-  const { ApiCalling, } = useCommonService()
+  const { ApiCalling } = useCommonService();
   const [profileName, setprofileName] = useState<any>({});
   const [modalOpen, setModalOpen] = useState(false); // Modal is initially closed
   const [showModal, setShowModal] = useState(false); // To control rendering of the modal
   const [nextModalOpen, setnextModalOpen] = useState(false);
   const [showNextModal, setShowNextModal] = useState(false); // To control rendering of the modal
   const [fxstModal, setfxstModal] = useState(false);
-  const [allData, setallData] = useState<any>([])
+  const [allData, setallData] = useState<any>([]);
   const [actOverview, setactOverview] = useState<any>([]);
   const [tokenData, settokenData] = useState<any>([]);
   const [allIncomes, setallIncomes] = useState<any>([]);
   const [myWallets, setmyWallets] = useState<any>([]);
-  const [LegBOverview, setLegBOverview] = useState<any>()
-  const [busniessoverView, setBusniessoverView] = useState<any>([])
-  const [totalInvestment, setTotalInvestment] = useState<any>([])
-  const [downloadappData, setdownloadappData] = useState<any>([])
+  const [LegBOverview, setLegBOverview] = useState<any>();
+  const [busniessoverView, setBusniessoverView] = useState<any>([]);
+  const [totalInvestment, setTotalInvestment] = useState<any>([]);
+  const [downloadappData, setdownloadappData] = useState<any>([]);
   const [latestAnnouncement, setlatestAnnouncement] = useState<any>([]);
-  const [incomeData, setincomeData] = useState<any>([])
+  const [incomeData, setincomeData] = useState<any>([]);
   const [TeamData, setTeamData] = useState<any>([]);
-  const [popImageURL, setpopImageURL] = useState<any>('')
-  const [TotalEarning, setTotalEarning] = useState<any>([])
-  const [LastLogin, setLastLogin] = useState<string>('')
-  const [couponCode, setcouponCode] = useState<string>('')
-  const [CoponCount, setCoponCount] = useState<any>(null)
-  const [isCouponApplicable, setisCouponApplicable] = useState<string>('')
-  const [airdropBalance, setAirdropBalance] = useState<string>('')
-  const [giftWallet, setGiftWallet] = useState<string>('')
-  const [bonanzaBalance, setBonanzaBalance] = useState<string>('')
-  const { showAlert } = useSweetAlert()
-  const navigate = useNavigate()
+  const [rankSummary, setrankSummary] = useState<any>([]);
+  const [popImageURL, setpopImageURL] = useState<any>("");
+  const [TotalEarning, setTotalEarning] = useState<any>([]);
+  const [LastLogin, setLastLogin] = useState<string>("");
+  const [couponCode, setcouponCode] = useState<string>("");
+  const [CoponCount, setCoponCount] = useState<any>(null);
+  const [isCouponApplicable, setisCouponApplicable] = useState<string>("");
+  const [airdropBalance, setAirdropBalance] = useState<string>("");
+  const [nextFridayDate, setnextFridayDate] = useState<string>("");
+  const [giftWallet, setGiftWallet] = useState<string>("");
+  const [bonanzaBalance, setBonanzaBalance] = useState<string>("");
+  const { showAlert } = useSweetAlert();
+  const navigate = useNavigate();
 
   const closeModal = () => {
-    document.body.style.paddingRight = '';
+    document.body.style.paddingRight = "";
     setModalOpen(false);
     setnextModalOpen(true);
-    setShowNextModal(true)
+    setShowNextModal(true);
   };
 
   // handling Next Modal
   const closeNextModal = () => {
-    document.body.style.paddingRight = '';
+    document.body.style.paddingRight = "";
     setnextModalOpen(false);
     setfxstModal(true);
   };
   const closeFXSTModal = () => {
-    document.body.style.paddingRight = '';
+    document.body.style.paddingRight = "";
     setfxstModal(false);
   };
-  // Fetching dashboard Data 
+  // Fetching dashboard Data
   const fetchData = async () => {
     try {
-      const data = await fetchDashboardData({ "MemberId": decryptData(localStorage.getItem("clientId") as string), "UserToken": decryptData(localStorage.getItem("userToken") as string), "CookieId": "", "ActionMode": "DashboardLoadCounts" });
+      const data = await fetchDashboardData({
+        MemberId: decryptData(localStorage.getItem("clientId") as string),
+        UserToken: decryptData(localStorage.getItem("userToken") as string),
+        CookieId: "",
+        ActionMode: "DashboardLoadCounts",
+      });
       // console.log(data);
       if (data[0]?.StatusCode === "0") {
-        showAlert('Your login is expired, Please relogin')
-        localStorage.clear()
+        showAlert("Your login is expired, Please relogin");
+        localStorage.clear();
         navigate(`${process.env.PUBLIC_URL}/login`);
       }
-      setallData(data)
-      setprofileName({ memberName: data[0]?.SName, Rank: data[0]?.MyRank })
+      setallData(data);
+      setprofileName({ memberName: data[0]?.SName, Rank: data[0]?.MyRank });
       setcouponCode(data[0]?.CouponCode);
       setCoponCount(data[0]?.CouponCount);
       setAirdropBalance(data[0]?.FXSTToken);
       setGiftWallet(data[0]?.GiftWallet);
       setBonanzaBalance(data[0]?.BonanzaWallet);
       setisCouponApplicable(data[0]?.IsApplicableForCoupon);
-      setactOverview(objectEntriesToArray({
-        'Activation': data[0]?.ActivationDate == "" ? "--" : data[0]?.ActivationDate,
-        "Registration": data[0]?.RegistrationDate,
-        "Status": data[0]?.BotStatus,
-        "Days Left": `${data[0]?.DaysLeft}`,
-      }))
-
-      setmyWallets(objectEntriesToArray({
-        "Commission Wallet": `$${data[0]?.CommissionBalance}`,
-        "Deposit Wallet": `$${data[0]?.ProductWallet}`,
-        // "Days Left": `${data[0]?.DaysLeft}`,
-      }))
+      setactOverview(
+        objectEntriesToArray({
+          Activation:
+            data[0]?.ActivationDate == "" ? "--" : data[0]?.ActivationDate,
+          Registration: data[0]?.RegistrationDate,
+          Status: data[0]?.BotStatus,
+          "Days Left": `${data[0]?.DaysLeft}`,
+        })
+      );
+      setnextFridayDate(data[0]?.NextFridayDate);
+      setmyWallets(
+        objectEntriesToArray({
+          "Commission Wallet": `$${data[0]?.CommissionBalance}`,
+          "Deposit Wallet": `$${data[0]?.ProductWallet}`,
+          // "Days Left": `${data[0]?.DaysLeft}`,
+        })
+      );
 
       // settokenData([
       //   data[0]?.DailyTradingProfit, `$${data[0]?.TotalEarned}`
       // ]
       // )
 
-      settokenData([data[0]?.FXSTToken, `$${data[0]?.TotalEarned}`])
-      setTotalEarning([data[0]?.DailyTradingProfit, `$${0}`])
+      settokenData([data[0]?.FXSTToken, `$${data[0]?.TotalEarned}`]);
+      setTotalEarning([data[0]?.DailyTradingProfit, `$${0}`]);
 
-      setallIncomes(objectEntriesToArray({
-        "IB Matching Income": `$${data[0]?.IBMatchingIncome || 0}`,
-        "Profit Sharing Income": `${data[0]?.ProfitSharingIncome || 0}`,
-        "Bot Income": `$${data[0]?.BotIncome || 0}`,
-        "Club Income": `$${data[0]?.ClubIncome || 0}`,
-      }))
-      setBusniessoverView(objectEntriesToArray({
-        'Right Business': data[0]?.RightTeamBotCount,
-        'Top Rank': data[0]?.TotalRightTeamBotCount
-      }))
+      setallIncomes(
+        objectEntriesToArray({
+          "IB Matching Income": `$${data[0]?.IBMatchingIncome || 0}`,
+          "Profit Sharing Income": `${data[0]?.ProfitSharingIncome || 0}`,
+          "Bot Income": `$${data[0]?.BotIncome || 0}`,
+          "Club Income": `$${data[0]?.ClubIncome || 0}`,
+        })
+      );
+      setBusniessoverView(
+        objectEntriesToArray({
+          "Right Business": data[0]?.RightTeamBotCount,
+          "Total Right Business": data[0]?.TotalRightTeamBotCount,
+        })
+      );
 
-      setLegBOverview(objectEntriesToArray({
-        "Left Business": data[0]?.LeftTeamBotCount,
-        "Current Rank": data[0]?.TotalLeftTeamBotCount,
-      }))
+      setLegBOverview(
+        objectEntriesToArray({
+          "Left Business": data[0]?.LeftTeamBotCount,
+          "Total Left Business": data[0]?.TotalLeftTeamBotCount,
+        })
+      );
 
-      setTotalInvestment(objectEntriesToArray({
-        "Left Carry Forward Business": data[0]?.LeftRemainingTeamBotCount,
-        "Right Carry Forward Business": data[0]?.RightRemainingTeamBotCount,
-      }))
+      setTotalInvestment(
+        objectEntriesToArray({
+          "Left Carry Forward Business": data[0]?.LeftRemainingTeamBotCount,
+          "Right Carry Forward Business": data[0]?.RightRemainingTeamBotCount,
+        })
+      );
+      console.log(data[0]?.NextFridayDate);
+      setdownloadappData(data[0]?.TotalZoneBusines);
 
-      setdownloadappData(data[0]?.TotalZoneBusines)
+      setLastLogin(data[0]?.LastLoginDate);
 
+      const nextRankSummaryData = [
+        {
+          icon: dynamicImage(`TotalTeam.png`),
+          color: "bg-light1",
+          title: "Current Rank",
+          count: data[0]?.CurrentRank,
+        },
 
-      setLastLogin(data[0]?.LastLoginDate)
-
-
+        {
+          icon: dynamicImage(`DiTeam.png`),
+          color: "bg-light3",
+          title: "Next Rank",
+          count: data[0]?.NextRank,
+        },
+        {
+          icon: dynamicImage(`InTeam.png`),
+          color: "bg-light2",
+          title: "Required Business",
+          count: data[0]?.RankQualificationBusiness,
+        },
+      ];
+      setrankSummary(nextRankSummaryData);
       const taskSummaryLeftData = [
         {
           icon: dynamicImage(`TotalTeam.png`),
@@ -159,13 +200,14 @@ const ContainerDashboard = () => {
           title: "Total",
           count: data[0]?.MyTeamCount,
         },
-       
+
         {
           icon: dynamicImage(`DiTeam.png`),
           color: "bg-light3",
           title: "Direct",
           count: data[0]?.SponsorCount,
-        }, {
+        },
+        {
           icon: dynamicImage(`InTeam.png`),
           color: "bg-light2",
           title: "InDirect",
@@ -175,45 +217,45 @@ const ContainerDashboard = () => {
 
       const IncomesData = [
         {
-          icon:dynamicImage(`TotalTeam.png`),
-          title:'Direct Bonus',
-          Value:data[0]?.SponsorIncome,
+          icon: dynamicImage(`TotalTeam.png`),
+          title: "Direct Bonus",
+          Value: data[0]?.SponsorIncome,
         },
         {
-          icon:dynamicImage(`TotalTeam.png`),
-          title:'Binary Bonus',
-          Value:data[0]?.BotMatchingIncome,
+          icon: dynamicImage(`TotalTeam.png`),
+          title: "Binary Bonus",
+          Value: data[0]?.BotMatchingIncome,
         },
         {
-          icon:dynamicImage(`TotalTeam.png`),
-          title:'Rank Bonus',
-          Value:data[0]?.LifeTimeReward,
+          icon: dynamicImage(`TotalTeam.png`),
+          title: "Rank Bonus",
+          Value: data[0]?.LifeTimeReward,
         },
         {
-          icon:dynamicImage(`TotalTeam.png`),
-          title:'Reward',
-          Value:data[0]?.RewardIncome,
-        }
-      ]
+          icon: dynamicImage(`TotalTeam.png`),
+          title: "Reward",
+          Value: data[0]?.RewardIncome,
+        },
+      ];
 
-      setincomeData(IncomesData)
-      setTeamData(taskSummaryLeftData)
-      setlatestAnnouncement(JSON.parse(data[0]?.Announcements))
-
+      setincomeData(IncomesData);
+      setTeamData(taskSummaryLeftData);
+      setlatestAnnouncement(JSON.parse(data[0]?.Announcements));
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   };
 
   const FetchModal = async () => {
     try {
-      const data = await ApiCalling({ procName: 'MemberPopupImage', Para: JSON.stringify({ ActionMode: "ImgForMemberPanel" }) });
+      const data = await ApiCalling({
+        procName: "MemberPopupImage",
+        Para: JSON.stringify({ ActionMode: "ImgForMemberPanel" }),
+      });
       // console.log(data);
-      setpopImageURL(data[0]?.ImagePath)
-    } catch (error) {
-
-    }
-  }
+      setpopImageURL(data[0]?.ImagePath);
+    } catch (error) {}
+  };
 
   useEffect(() => {
     fetchData();
@@ -233,49 +275,58 @@ const ContainerDashboard = () => {
   //   return () => clearTimeout(timer);
   // }, [])
 
-  const Go_docverfication = ()=>{
-    closeNextModal()
-  //  setTimeout(()=>{
-    navigate(`${process.env.PUBLIC_URL}/docverification`)
-  //  }, 2000)
-  }
+  const Go_docverfication = () => {
+    closeNextModal();
+    //  setTimeout(()=>{
+    navigate(`${process.env.PUBLIC_URL}/docverification`);
+    //  }, 2000)
+  };
 
   return (
     <>
       <Breadcrumbs mainTitle={Dashboard} parent={DashboardPage} />
-      {!loading ? <Container fluid className="default-dashboard">
-        {/* <FireworkCanvas style={{ width: '100%', height: '100%' }}/>  */}
-        <Row>
-          <ProfileGreet profileName={profileName} loadingStatus={loading} />
-          <AccountOverview actOverviewData={actOverview} LastLogin={LastLogin} myWallets={myWallets} />
-          <Investing IncomesData={incomeData} />
-          {/* <TotalInvestment TotalinvestmentData={totalInvestment} /> */}
-          <Col className='d-block d-md-none'>
-          <CountdownTimer targetDate="2025-06-01T00:00:00" /></Col>
-          <BusinessOverview LegBViewdata={LegBOverview} BOverviewData={busniessoverView} />
-          <TaskSummary TeamData={TeamData} />         
-          <DownloadApp downloadappData={downloadappData} />
-          <Other_Wallet airdrop={airdropBalance} gitwallet={giftWallet} bonanza={bonanzaBalance} />
-          
-         
-          {/* <Token tokenData={tokenData} /> */}
-        
-         
-        
-          <Notifications />
-          <CoursesHighlighted LatestAnnouncement={latestAnnouncement} />
-          {/* <MonthlyOverview/> */}
-          {/* <DailyBotTrading DailyBotData={TotalEarning} /> */}
-          {/* <TotalVisit TotalEarned={TotalEarning} /> */}
-         
-          
-         
-          {/* <ThirdPartyCard /> */}
-        </Row>
-        {/* <div style={{ position:'absolute', top:'0', width: '98%', height: '100%', pointerEvents: 'none', zIndex: 0 }}>
+      {!loading ? (
+        <Container fluid className="default-dashboard">
+          {/* <FireworkCanvas style={{ width: '100%', height: '100%' }}/>  */}
+          <Row>
+            <ProfileGreet profileName={profileName} loadingStatus={loading} />
+            <AccountOverview
+              actOverviewData={actOverview}
+              LastLogin={LastLogin}
+              myWallets={myWallets}
+            />
+            <Investing IncomesData={incomeData} />
+            {/* <TotalInvestment TotalinvestmentData={totalInvestment} /> */}
+            <Col className="d-block d-md-none">
+              <CountdownTimer targetDate={nextFridayDate} />
+            </Col>
+            <BusinessOverview
+              LegBViewdata={LegBOverview}
+              BOverviewData={busniessoverView}
+            />
+            <TaskSummary TeamData={TeamData} />
+            <NextRankSummary TeamData={rankSummary} />
+            {/* <DownloadApp downloadappData={downloadappData} /> */}
+            <Other_Wallet
+              airdrop={airdropBalance}
+              gitwallet={giftWallet}
+              bonanza={bonanzaBalance}
+            />
+
+            {/* <Token tokenData={tokenData} /> */}
+
+            <Notifications />
+            <CoursesHighlighted LatestAnnouncement={latestAnnouncement} />
+            {/* <MonthlyOverview/> */}
+            {/* <DailyBotTrading DailyBotData={TotalEarning} /> */}
+            {/* <TotalVisit TotalEarned={TotalEarning} /> */}
+
+            {/* <ThirdPartyCard /> */}
+          </Row>
+          {/* <div style={{ position:'absolute', top:'0', width: '98%', height: '100%', pointerEvents: 'none', zIndex: 0 }}>
          <FireworkCanvas style={{ width: '100%', height: '100%', }} soundSrc={dynamicImage("crackers-sound.mp3")} /> 
          </div> */}
-        {/* <Modal isOpen={modalOpen} toggle={closeModal} centered>
+          {/* <Modal isOpen={modalOpen} toggle={closeModal} centered>
           <ModalHeader toggle={closeModal} className="mymodal-header px-4">
             Scan the QR code below to complete your payment quickly and securely!
           </ModalHeader>
@@ -285,7 +336,7 @@ const ContainerDashboard = () => {
             </div>
           </ModalBody>
         </Modal> */}
-        {/* <Modal isOpen={nextModalOpen} toggle={closeNextModal} centered>
+          {/* <Modal isOpen={nextModalOpen} toggle={closeNextModal} centered>
           <ModalHeader toggle={closeNextModal} className="mymodal-header px-4">
             IMPORTANT NOTICE( KYC Verification)
           </ModalHeader>
@@ -322,7 +373,7 @@ const ContainerDashboard = () => {
             </div>
           </ModalBody>
         </Modal> */}
-        {/* <Modal isOpen={fxstModal} toggle={closeFXSTModal} centered>
+          {/* <Modal isOpen={fxstModal} toggle={closeFXSTModal} centered>
           <ModalHeader toggle={closeFXSTModal} className="mymodal-header px-4">
             IMPORTANT NOTICE
           </ModalHeader>
@@ -344,34 +395,42 @@ const ContainerDashboard = () => {
             </div>
           </ModalBody>
         </Modal>  */}
-        <Modal isOpen={fxstModal} toggle={closeFXSTModal} centered style={{display:'none !important'}}>
-          <ModalHeader toggle={closeFXSTModal} className="bg-dark px-4 d-flex">
-          <div>  🎉✨💥 Happy New Year 💥✨🎉</div>
-          </ModalHeader>
-          <ModalBody className="mymodal-body text-center newYear_Modal " >
-            <div style={{ height: 'auto', width: '100%' }}>
-              {/* <Image className="w-50" alt='popimage' title='popImage' src={dynamicImage("logo2.png")} /> */}
+          <Modal
+            isOpen={fxstModal}
+            toggle={closeFXSTModal}
+            centered
+            style={{ display: "none !important" }}
+          >
+            <ModalHeader
+              toggle={closeFXSTModal}
+              className="bg-dark px-4 d-flex"
+            >
+              <div> 🎉✨💥 Happy New Year 💥✨🎉</div>
+            </ModalHeader>
+            <ModalBody className="mymodal-body text-center newYear_Modal ">
+              <div style={{ height: "auto", width: "100%" }}>
+                {/* <Image className="w-50" alt='popimage' title='popImage' src={dynamicImage("logo2.png")} /> */}
 
-              <div className='text-start' style={{height:'60vh'}}>
-                {/* <P className='py-4 text-success p-4'>
+                <div className="text-start" style={{ height: "60vh" }}>
+                  {/* <P className='py-4 text-success p-4'>
                   "Dear Fxstock Family Members,<br />
                   💥 "Congratulations and best wishes for a fantastic 2025, Surendra! May this year bring you success and happiness, from all of us at FXStock Corporation. Happy New Year!" 🎉✨💥
                 </P> */}
+                </div>
+                <div className="text-end">
+                  <Btn color="primary" onClick={closeFXSTModal}>
+                    Close
+                  </Btn>
+                </div>
               </div>
-              <div className='text-end'>
-                <Btn color='primary' onClick={closeFXSTModal}>
-                  Close
-                </Btn>
-              </div>
-            </div>
-          </ModalBody>
-        </Modal> 
-      </Container>
-        :
+            </ModalBody>
+          </Modal>
+        </Container>
+      ) : (
         <Container fluid className="default-dashboard">
           <DashboardSkeleton />
         </Container>
-      }
+      )}
     </>
   );
 };

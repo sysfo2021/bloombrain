@@ -118,11 +118,15 @@ export interface BusinessListInterface{
 }
 
 export interface SponsorListInterface {
-  name:any,
-  sortable: boolean;
-  center: boolean;
-  Status:string;
-  BotStatus:string;
+  SNo: number;
+  Name: string;
+  MobileNo: string;
+  Username: string;
+  RegistrationDate: string;
+  JoiningAmount: number;
+  Status: string;
+  Placement: string;
+  ClientId: string;
 }
 export interface WithDrawReportInterface {
   name:any,

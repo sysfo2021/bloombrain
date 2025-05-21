@@ -64,6 +64,7 @@ export const CarryForwardHeading = "Carry Forward Business Statistics";
 export const MonthlyOverviewHeading = "Monthly Overview";
 export const Progress = "Progress";
 export const TaskSummaryHeading = "Team Overview";
+export const NextRankSummaryHeading = "Next Rank Summary";
 export const OurCrew = "Our Team";
 export const TeamMembers = "Team Memebers";
 export const Accept = "Accept";
@@ -213,7 +214,7 @@ export const WalletTransferFxstPayToCommission = "Transfer From Fxst Pay To Comm
 export const WalletTransfer = "Wallet Transfer";
 
 export const P2P = "P2P Transfer";
-
+export const Placement = "Member Placement";
 export const P2PTransferReport = "P2P Report"
 export const KingMakerzTransfer = "Transfer To King Makerz Wallet";
 export const KingMakerzTransferLog = "King Makerz Wallet Transfer Log";
