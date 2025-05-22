@@ -89,3 +89,22 @@
     }
   }
 }
+
+.custom-modal {
+  position: static;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mymodal-header {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.mymodal-body {
+  padding: 20px;
+}

@@ -99,30 +99,9 @@ const PackageContainer = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <Breadcrumbs mainTitle={Package} parent={Package} />
-
       <Container fluid>
-        <Modal isOpen={modalOpen} toggle={closeModal} centered>
-          <ModalHeader toggle={closeModal} className="mymodal-header px-4">
-            Package Benefits
-          </ModalHeader>
-          <ModalBody className="mymodal-body text-center">
-            <div className="w-100">
-              <ol className="list-decimal text-left pl-6 space-y-3 amenity-list">
-                {amenities.map((item, index) => (
-                  <li
-                    key={index}
-                    className="bg-[#e0e7ff] text-[#1e293b] rounded-md px-4 py-3 font-medium"
-                  >
-                    {item.Amentiy}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </ModalBody>
-        </Modal>
-
         <Row className="justify-content-center">
           <Col
             className="pricing-box align-item-center p-0 py-2 m-0 mb-4 col-md-9"
@@ -161,8 +140,6 @@ const PackageContainer = () => {
                 >
                   {({ resetForm }) => (
                     <Form>
-                      {/* <Field type="number" className="enterAmount" name="Amount" placeholder="Enter Amount" />
-                      <ErrorMessage name="Amount" component="div" className="text-danger" /> */}
                       <button className="buy-now" type="submit">
                         Buy Now{" "}
                         {loading && PackageName === plan.PackageName ? (
@@ -182,7 +159,33 @@ const PackageContainer = () => {
           ))}
         </Row>
       </Container>
-    </>
+        <Modal 
+    isOpen={modalOpen} 
+    toggle={closeModal} 
+    centered 
+    backdrop="static"
+    className="custom-modal"
+    style={{ zIndex: 1050 }}
+  >
+    <ModalHeader toggle={closeModal} className="mymodal-header px-4">
+      Package Benefits
+    </ModalHeader>
+    <ModalBody className="mymodal-body text-center">
+      <div className="w-100">
+        <ol className="list-decimal text-left pl-6 space-y-3 amenity-list">
+          {amenities.map((item, index) => (
+            <li
+              key={index}
+              className="bg-[#e0e7ff] text-[#1e293b] rounded-md px-4 py-3 font-medium"
+            >
+              {item.Amentiy}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </ModalBody>
+  </Modal>
+    </div>
   );
 };
 
